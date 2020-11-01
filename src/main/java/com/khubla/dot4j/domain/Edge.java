@@ -8,8 +8,8 @@ import java.util.*;
  * @author tom
  */
 public class Edge {
-	private NodeId nodeId;
-	private Graph subGraph;
+	private NodeId fromNodeId;
+	private Graph fromSubGraph;
 	private final AttributeList attributeList = new AttributeList();
 	private final List<NodeId> rhsNodeIds = new ArrayList<NodeId>();
 	private final List<Graph> rhsGraphs = new ArrayList<Graph>();
@@ -30,10 +30,6 @@ public class Edge {
 		return attributeList;
 	}
 
-	public NodeId getNodeId() {
-		return nodeId;
-	}
-
 	public List<Graph> getRhsGraphs() {
 		return rhsGraphs;
 	}
@@ -42,15 +38,19 @@ public class Edge {
 		return rhsNodeIds;
 	}
 
-	public Graph getSubGraph() {
-		return subGraph;
+	public NodeId getFromNodeId() {
+		return fromNodeId;
 	}
 
-	public void setNodeId(NodeId nodeId) {
-		this.nodeId = nodeId;
+	public void setFromNodeId(NodeId fromNodeId) {
+		this.fromNodeId = fromNodeId;
 	}
 
-	public void setSubGraph(Graph subGraph) {
-		this.subGraph = subGraph;
+	public Graph getFromSubGraph() {
+		return fromSubGraph;
+	}
+
+	public void setFromSubGraph(Graph fromSubGraph) {
+		this.fromSubGraph = fromSubGraph;
 	}
 }

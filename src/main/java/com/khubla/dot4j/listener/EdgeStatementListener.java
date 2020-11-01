@@ -15,11 +15,11 @@ public class EdgeStatementListener extends AbstractListener {
 		if (null != ctx.node_id()) {
 			final NodeIdListener nodeIdListener = new NodeIdListener();
 			nodeIdListener.enterNode_id(ctx.node_id());
-			edge.setNodeId(nodeIdListener.nodeId);
+			edge.setFromNodeId(nodeIdListener.nodeId);
 		} else if (null != ctx.subgraph()) {
 			final SubgraphListener subgraphListener = new SubgraphListener();
 			subgraphListener.enterSubgraph(ctx.subgraph());
-			edge.setSubGraph(subgraphListener.graph);
+			edge.setFromSubGraph(subgraphListener.graph);
 		}
 		/*
 		 * edge RHS
