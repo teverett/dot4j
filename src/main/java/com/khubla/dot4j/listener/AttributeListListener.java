@@ -14,9 +14,10 @@ public class AttributeListListener extends AbstractListener {
 		 * list
 		 */
 		if (null != ctx.a_list()) {
-			for (A_listContext a_listContext : ctx.a_list()) {
-				AListListener aListListener = new AListListener();
+			for (final A_listContext a_listContext : ctx.a_list()) {
+				final AListListener aListListener = new AListListener();
 				aListListener.enterA_list(a_listContext);
+				attributeList.addAttribute(aListListener.attribute);
 			}
 		}
 	}

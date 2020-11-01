@@ -29,7 +29,7 @@ public class GraphListener extends AbstractListener {
 		 * id
 		 */
 		if (null != ctx.id()) {
-			IdListener idListener = new IdListener();
+			final IdListener idListener = new IdListener();
 			idListener.enterId(ctx.id());
 			graph.setId(idListener.id);
 		}
@@ -37,7 +37,7 @@ public class GraphListener extends AbstractListener {
 		 * statement list
 		 */
 		if (null != ctx.stmt_list()) {
-			StatementListListener statementListListener = new StatementListListener(graph);
+			final StatementListListener statementListListener = new StatementListListener(graph);
 			statementListListener.enterStmt_list(ctx.stmt_list());
 		}
 	}

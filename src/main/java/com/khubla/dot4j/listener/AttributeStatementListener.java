@@ -13,9 +13,9 @@ public class AttributeStatementListener extends AbstractListener {
 		 * list
 		 */
 		if (null != ctx.attr_list()) {
-			AttributeListListener attributeListListener = new AttributeListListener();
+			final AttributeListListener attributeListListener = new AttributeListListener();
 			attributeListListener.enterAttr_list(ctx.attr_list());
-			this.attributeList = attributeListListener.attributeList;
+			attributeList = attributeListListener.attributeList;
 		}
 		/*
 		 * type

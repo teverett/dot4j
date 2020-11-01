@@ -14,9 +14,12 @@ public class StatementListListener extends AbstractListener {
 
 	@Override
 	public void enterStmt_list(DOTParser.Stmt_listContext ctx) {
+		/*
+		 * statements
+		 */
 		if (null != ctx.stmt()) {
-			for (StmtContext stmtContext : ctx.stmt()) {
-				StatementListener statementListener = new StatementListener(graph);
+			for (final StmtContext stmtContext : ctx.stmt()) {
+				final StatementListener statementListener = new StatementListener(graph);
 				statementListener.enterStmt(stmtContext);
 			}
 		}

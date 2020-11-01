@@ -14,15 +14,24 @@ public class StatementListener extends AbstractListener {
 	@Override
 	public void enterStmt(DOTParser.StmtContext ctx) {
 		if (null != ctx.node_stmt()) {
-			NodeStatementListener nodeStatementListener = new NodeStatementListener();
+			/*
+			 * node
+			 */
+			final NodeStatementListener nodeStatementListener = new NodeStatementListener();
 			nodeStatementListener.enterNode_stmt(ctx.node_stmt());
 			graph.addNode(nodeStatementListener.node);
 		} else if (null != ctx.edge_stmt()) {
-			EdgeStatementListener edgeStatementListener = new EdgeStatementListener();
+			/*
+			 * edge
+			 */
+			final EdgeStatementListener edgeStatementListener = new EdgeStatementListener();
 			edgeStatementListener.enterEdge_stmt(ctx.edge_stmt());
 			graph.addEdge(edgeStatementListener.edge);
 		} else if (null != ctx.attr_stmt()) {
-			AttributeStatementListener attributeStatementListener = new AttributeStatementListener();
+			/*
+			 * attribute
+			 */
+			final AttributeStatementListener attributeStatementListener = new AttributeStatementListener();
 			attributeStatementListener.enterAttr_stmt(ctx.attr_stmt());
 			if (attributeStatementListener.attributeType == AttributeType.node) {
 				graph.addNodeAttributes(attributeStatementListener.attributeList);
@@ -32,9 +41,15 @@ public class StatementListener extends AbstractListener {
 				graph.addGraphAttributes(attributeStatementListener.attributeList);
 			}
 		} else if (null != ctx.id()) {
+			/*
+			 * assign
+			 */
 			throw new RuntimeException("Not Implemented");
 		} else if (null != ctx.subgraph()) {
-			SubgraphListener subgraphListener = new SubgraphListener();
+			/*
+			 * subgraph
+			 */
+			final SubgraphListener subgraphListener = new SubgraphListener();
 			subgraphListener.enterSubgraph(ctx.subgraph());
 			graph.addSubgraph(subgraphListener.graph);
 		}

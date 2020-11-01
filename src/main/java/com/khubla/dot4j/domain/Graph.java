@@ -12,84 +12,8 @@ public class Graph extends Vertex {
 	private AttributeList graphAttributes;
 	private AttributeList edgeAttributes;
 
-	public boolean isStrict() {
-		return strict;
-	}
-
-	public void setStrict(boolean strict) {
-		this.strict = strict;
-	}
-
-	public GraphType getGraphType() {
-		return graphType;
-	}
-
-	public void setGraphType(GraphType graphType) {
-		this.graphType = graphType;
-	}
-
-	public List<Edge> getEdges() {
-		return edges;
-	}
-
-	public void setEdges(List<Edge> edges) {
-		this.edges = edges;
-	}
-
-	public void addNode(Node node) {
-		this.nodes.add(node);
-	}
-
 	public void addEdge(Edge edge) {
-		this.edges.add(edge);
-	}
-
-	public AttributeList getNodeAttributes() {
-		return nodeAttributes;
-	}
-
-	public void setNodeAttributes(AttributeList nodeAttributes) {
-		this.nodeAttributes = nodeAttributes;
-	}
-
-	public AttributeList getGraphAttributes() {
-		return graphAttributes;
-	}
-
-	public void setGraphAttributes(AttributeList graphAttributes) {
-		this.graphAttributes = graphAttributes;
-	}
-
-	public AttributeList getEdgeAttributes() {
-		return edgeAttributes;
-	}
-
-	public void setEdgeAttributes(AttributeList edgeAttributes) {
-		this.edgeAttributes = edgeAttributes;
-	}
-
-	public void addSubgraph(Graph graph) {
-		this.subGraphs.put(graph.getId(), arg1)
-	}
-
-	public Map<String, Node> getNodes() {
-		return nodes;
-	}
-
-	public void setNodes(Map<String, Node> nodes) {
-		this.nodes = nodes;
-	}
-
-	public Map<String, Graph> getSubGraphs() {
-		return subGraphs;
-	}
-
-	public void setSubGraphs(Map<String, Graph> subGraphs) {
-		this.subGraphs = subGraphs;
-	}
-
-	public void addNodeAttributes(AttributeList attributeList) {
-		throw new RuntimeException("Not Implemented");
+		edges.add(edge);
 	}
 
 	public void addEdgeAttributes(AttributeList attributeList) {
@@ -98,5 +22,81 @@ public class Graph extends Vertex {
 
 	public void addGraphAttributes(AttributeList attributeList) {
 		throw new RuntimeException("Not Implemented");
+	}
+
+	public void addNode(Node node) {
+		nodes.put(node.getId(), node);
+	}
+
+	public void addNodeAttributes(AttributeList attributeList) {
+		throw new RuntimeException("Not Implemented");
+	}
+
+	public void addSubgraph(Graph graph) {
+		subGraphs.put(graph.getId(), graph);
+	}
+
+	public AttributeList getEdgeAttributes() {
+		return edgeAttributes;
+	}
+
+	public List<Edge> getEdges() {
+		return edges;
+	}
+
+	public AttributeList getGraphAttributes() {
+		return graphAttributes;
+	}
+
+	public GraphType getGraphType() {
+		return graphType;
+	}
+
+	public AttributeList getNodeAttributes() {
+		return nodeAttributes;
+	}
+
+	public Map<String, Node> getNodes() {
+		return nodes;
+	}
+
+	public Map<String, Graph> getSubGraphs() {
+		return subGraphs;
+	}
+
+	public boolean isStrict() {
+		return strict;
+	}
+
+	public void setEdgeAttributes(AttributeList edgeAttributes) {
+		this.edgeAttributes = edgeAttributes;
+	}
+
+	public void setEdges(List<Edge> edges) {
+		this.edges = edges;
+	}
+
+	public void setGraphAttributes(AttributeList graphAttributes) {
+		this.graphAttributes = graphAttributes;
+	}
+
+	public void setGraphType(GraphType graphType) {
+		this.graphType = graphType;
+	}
+
+	public void setNodeAttributes(AttributeList nodeAttributes) {
+		this.nodeAttributes = nodeAttributes;
+	}
+
+	public void setNodes(Map<String, Node> nodes) {
+		this.nodes = nodes;
+	}
+
+	public void setStrict(boolean strict) {
+		this.strict = strict;
+	}
+
+	public void setSubGraphs(Map<String, Graph> subGraphs) {
+		this.subGraphs = subGraphs;
 	}
 }

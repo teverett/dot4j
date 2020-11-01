@@ -4,6 +4,10 @@ DOT4J
 
 A Java library for rendering [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language))
 
+The DOT grammars is from [here](https://github.com/teverett/grammars-v4/tree/master/dot)
+
+A formal description of DOT is available at [graphvis.org](https://graphviz.org/doc/info/lang.html)
+
 License
 -------------
 

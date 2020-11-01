@@ -11,10 +11,18 @@ public class SubgraphListener extends AbstractListener {
 		graph = new Graph();
 		graph.setGraphType(GraphType.subgraph);
 		/*
+		 * id
+		 */
+		if (null != ctx.id()) {
+			final IdListener idListener = new IdListener();
+			idListener.enterId(ctx.id());
+			graph.setId(idListener.id);
+		}
+		/*
 		 * statement list
 		 */
 		if (null != ctx.stmt_list()) {
-			StatementListListener statementListListener = new StatementListListener(graph);
+			final StatementListListener statementListListener = new StatementListListener(graph);
 			statementListListener.enterStmt_list(ctx.stmt_list());
 		}
 	}

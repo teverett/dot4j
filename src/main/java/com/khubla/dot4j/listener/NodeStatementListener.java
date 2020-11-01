@@ -13,15 +13,15 @@ public class NodeStatementListener extends AbstractListener {
 		 * id
 		 */
 		if (null != ctx.node_id()) {
-			NodeIdListener nodeIdListener = new NodeIdListener();
+			final NodeIdListener nodeIdListener = new NodeIdListener();
 			nodeIdListener.enterNode_id(ctx.node_id());
-			node.setNodeId(nodeIdListener.nodeId);
+			node.setId(nodeIdListener.nodeId.toString());
 		}
 		/*
-		 * attr
+		 * ` attr
 		 */
 		if (null != ctx.attr_list()) {
-			AttributeListListener attributeListListener = new AttributeListListener();
+			final AttributeListListener attributeListListener = new AttributeListListener();
 			attributeListListener.enterAttr_list(ctx.attr_list());
 			node.setAttributeList(attributeListListener.attributeList);
 		}

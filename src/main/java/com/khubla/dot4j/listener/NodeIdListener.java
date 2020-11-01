@@ -8,14 +8,20 @@ public class NodeIdListener extends AbstractListener {
 
 	@Override
 	public void enterNode_id(DOTParser.Node_idContext ctx) {
+		/*
+		 * id
+		 */
 		nodeId = new NodeId();
 		if (null != ctx.id()) {
-			IdListener idListener = new IdListener();
+			final IdListener idListener = new IdListener();
 			idListener.enterId(ctx.id());
 			nodeId.setId(idListener.id);
 		}
+		/*
+		 * port
+		 */
 		if (null != ctx.port()) {
-			PortListener portListener = new PortListener();
+			final PortListener portListener = new PortListener();
 			portListener.enterPort(ctx.port());
 			nodeId.setPort(portListener.port);
 		}

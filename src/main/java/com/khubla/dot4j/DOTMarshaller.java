@@ -37,11 +37,11 @@ public class DOTMarshaller {
 			/*
 			 * make a Parser on the token stream
 			 */
-			DOTParser dotParser = new DOTParser(tokenStream);
+			final DOTParser dotParser = new DOTParser(tokenStream);
 			/*
 			 * listener
 			 */
-			GraphListener graphListener = new GraphListener();
+			final GraphListener graphListener = new GraphListener();
 			/*
 			 * parse
 			 */
