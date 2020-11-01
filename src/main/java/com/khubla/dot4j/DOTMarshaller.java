@@ -1,5 +1,13 @@
 package com.khubla.dot4j;
 
+import java.io.*;
+
+import org.antlr.v4.runtime.*;
+
+import com.khubla.dot.*;
+import com.khubla.dot4j.domain.*;
+import com.khubla.dot4j.listener.*;
+
 public class DOTMarshaller {
 	// public static void exportGraph(GraphmlType graphmlType, OutputStream outputStream) throws
 	// IOException, JAXBException {
@@ -16,17 +24,34 @@ public class DOTMarshaller {
 	// }
 	// }
 	//
-	// public static GraphmlType importGraph(InputStream inputStream) throws IOException,
-	// JAXBException {
-	// if (null != inputStream) {
-	// final JAXBContext jc = JAXBContext.newInstance(PACKAGE);
-	// final Unmarshaller unmarshaller = jc.createUnmarshaller();
-	// @SuppressWarnings("unchecked")
-	// final JAXBElement<GraphmlType> je = (JAXBElement<GraphmlType>)
-	// unmarshaller.unmarshal(inputStream);
-	// return je.getValue();
-	// } else {
-	// return null;
-	// }
-	// }
+	public static Graph importGraph(InputStream inputStream) throws IOException {
+		if (null != inputStream) {
+			/*
+			 * make Lexer
+			 */
+			final Lexer lexer = new DOTLexer(CharStreams.fromStream(inputStream));
+			/*
+			 * get a TokenStream on the Lexer
+			 */
+			final TokenStream tokenStream = new CommonTokenStream(lexer);
+			/*
+			 * make a Parser on the token stream
+			 */
+			DOTParser dotParser = new DOTParser(tokenStream);
+			/*
+			 * listener
+			 */
+			GraphListener graphListener = new GraphListener();
+			/*
+			 * parse
+			 */
+			graphListener.enterGraph(dotParser.graph());
+			/*
+			 * done
+			 */
+			return graphListener.graph;
+		} else {
+			return null;
+		}
+	}
 }
