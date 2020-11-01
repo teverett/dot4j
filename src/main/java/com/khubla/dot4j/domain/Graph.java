@@ -5,12 +5,12 @@ import java.util.*;
 public class Graph extends Vertex {
 	private boolean strict;
 	private GraphType graphType;
-	private Map<String, Node> nodes = new HashMap<String, Node>();
-	private List<Edge> edges = new ArrayList<Edge>();
-	private Map<String, Graph> subGraphs = new HashMap<String, Graph>();
-	private AttributeList nodeAttributes;
-	private AttributeList graphAttributes;
-	private AttributeList edgeAttributes;
+	private final Map<String, Node> nodes = new HashMap<String, Node>();
+	private final List<Edge> edges = new ArrayList<Edge>();
+	private final Map<String, Graph> subGraphs = new HashMap<String, Graph>();
+	private final AttributeList nodeAttributes = new AttributeList();
+	private final AttributeList graphAttributes = new AttributeList();
+	private final AttributeList edgeAttributes = new AttributeList();
 
 	public void addEdge(Edge edge) {
 		edges.add(edge);
@@ -68,35 +68,11 @@ public class Graph extends Vertex {
 		return strict;
 	}
 
-	public void setEdgeAttributes(AttributeList edgeAttributes) {
-		this.edgeAttributes = edgeAttributes;
-	}
-
-	public void setEdges(List<Edge> edges) {
-		this.edges = edges;
-	}
-
-	public void setGraphAttributes(AttributeList graphAttributes) {
-		this.graphAttributes = graphAttributes;
-	}
-
 	public void setGraphType(GraphType graphType) {
 		this.graphType = graphType;
 	}
 
-	public void setNodeAttributes(AttributeList nodeAttributes) {
-		this.nodeAttributes = nodeAttributes;
-	}
-
-	public void setNodes(Map<String, Node> nodes) {
-		this.nodes = nodes;
-	}
-
 	public void setStrict(boolean strict) {
 		this.strict = strict;
-	}
-
-	public void setSubGraphs(Map<String, Graph> subGraphs) {
-		this.subGraphs = subGraphs;
 	}
 }

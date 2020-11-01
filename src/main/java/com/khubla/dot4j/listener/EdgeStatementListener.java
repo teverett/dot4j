@@ -22,11 +22,17 @@ public class EdgeStatementListener extends AbstractListener {
 			edge.setSubGraph(subgraphListener.graph);
 		}
 		/*
-		 * edgerhs
+		 * edge RHS
 		 */
 		if (null != ctx.edgeRHS()) {
 			final EdgeRHSListener edgeRHSListener = new EdgeRHSListener();
 			edgeRHSListener.enterEdgeRHS(ctx.edgeRHS());
+			for (final NodeId nodeId : edgeRHSListener.nodeIds) {
+				edge.addRHSNodeId(nodeId);
+			}
+			for (final Graph graph : edgeRHSListener.subGraphs) {
+				edge.addRHSGraph(graph);
+			}
 		}
 		/*
 		 * attr
@@ -34,7 +40,7 @@ public class EdgeStatementListener extends AbstractListener {
 		if (null != ctx.attr_list()) {
 			final AttributeListListener attributeListListener = new AttributeListListener();
 			attributeListListener.enterAttr_list(ctx.attr_list());
-			edge.setAttributeList(attributeListListener.attributeList);
+			edge.addAttributeList(attributeListListener.attributeList);
 		}
 	}
 }

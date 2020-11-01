@@ -1,13 +1,13 @@
 package com.khubla.dot4j.domain;
 
 public class Node extends Vertex {
-	private AttributeList attributeList;
+	private final AttributeList attributeList = new AttributeList();
+
+	public void addAttributeList(AttributeList attributeList) {
+		this.attributeList.add(attributeList);
+	}
 
 	public AttributeList getAttributeList() {
 		return attributeList;
-	}
-
-	public void setAttributeList(AttributeList attributeList) {
-		this.attributeList = attributeList;
 	}
 }

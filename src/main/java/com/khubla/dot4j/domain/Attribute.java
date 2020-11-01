@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Attribute {
 	private String lhs;
-	private List<String> rhs = new ArrayList<String>();
+	private final List<String> rhs = new ArrayList<String>();
 
 	public void addRHS(String id) {
 		rhs.add(id);
@@ -20,9 +20,5 @@ public class Attribute {
 
 	public void setLhs(String lhs) {
 		this.lhs = lhs;
-	}
-
-	public void setRhs(List<String> rhs) {
-		this.rhs = rhs;
 	}
 }
