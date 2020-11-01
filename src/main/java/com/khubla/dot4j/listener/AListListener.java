@@ -19,7 +19,7 @@ public class AListListener extends AbstractListener {
 			/*
 			 * rhs
 			 */
-			for (int i = 1; i < (ctx.id().size() + 1); i++) {
+			for (int i = 1; i < (ctx.id().size()); i++) {
 				final IdListener idListener2 = new IdListener();
 				idListener2.enterId(ctx.id(i));
 				attribute.addRHS(idListener2.id);

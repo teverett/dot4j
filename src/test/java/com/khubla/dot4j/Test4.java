@@ -8,18 +8,18 @@ import org.junit.jupiter.api.*;
 
 import com.khubla.dot4j.domain.*;
 
-public class Test1 {
+public class Test4 {
 	@Test
 	public void test11() {
 		try {
-			final InputStream inputStream = Test1.class.getResourceAsStream("/example1.txt");
+			final InputStream inputStream = Test4.class.getResourceAsStream("/example4.txt");
 			assertNotNull(inputStream);
 			final Graph graph = DOTMarshaller.importGraph(inputStream);
 			/*
 			 * graph
 			 */
 			assertNotNull(graph);
-			assertTrue(graph.getId().compareTo("graphname") == 0);
+			assertTrue(graph.getId().compareTo("ethane") == 0);
 			/*
 			 * graph attribs
 			 */
@@ -27,13 +27,13 @@ public class Test1 {
 			/*
 			 * edges
 			 */
-			assertTrue(graph.getEdges().size() == 2);
-			final Edge edge0 = graph.getEdges().get(0);
-			assertTrue(edge0.getRhsGraphs().size() == 0);
-			assertTrue(edge0.getRhsNodeIds().size() == 2);
-			final Edge edge1 = graph.getEdges().get(1);
-			assertTrue(edge1.getRhsGraphs().size() == 0);
-			assertTrue(edge1.getRhsNodeIds().size() == 1);
+			assertTrue(graph.getEdges().size() == 7);
+			for (int i = 0; i < 7; i++) {
+				final Edge edge = graph.getEdges().get(i);
+				assertTrue(edge.getRhsGraphs().size() == 0);
+				assertTrue(edge.getRhsNodeIds().size() == 1);
+				assertTrue(edge.getAttributeList().getAttributes().size() == 1);
+			}
 			/*
 			 * nodes
 			 */

@@ -18,11 +18,15 @@ public class Graph implements Vertex {
 	}
 
 	public void addEdgeAttributes(AttributeList attributeList) {
-		throw new RuntimeException("Not Implemented");
+		edgeAttributes.add(attributeList);
+	}
+
+	public void addGraphAttribute(Attribute attribute) {
+		graphAttributes.addAttribute(attribute);
 	}
 
 	public void addGraphAttributes(AttributeList attributeList) {
-		throw new RuntimeException("Not Implemented");
+		graphAttributes.add(graphAttributes);
 	}
 
 	public void addNode(Node node) {
@@ -30,7 +34,7 @@ public class Graph implements Vertex {
 	}
 
 	public void addNodeAttributes(AttributeList attributeList) {
-		throw new RuntimeException("Not Implemented");
+		nodeAttributes.add(attributeList);
 	}
 
 	public void addSubgraph(Graph graph) {

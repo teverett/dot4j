@@ -42,9 +42,16 @@ public class StatementListener extends AbstractListener {
 			}
 		} else if (null != ctx.id()) {
 			/*
-			 * assign
+			 * graph attribute
 			 */
-			throw new RuntimeException("Not Implemented");
+			final IdListener idListener1 = new IdListener();
+			idListener1.enterId(ctx.id(0));
+			final IdListener idListener2 = new IdListener();
+			idListener2.enterId(ctx.id(1));
+			final Attribute attribute = new Attribute();
+			attribute.setLhs(idListener1.id);
+			attribute.addRHS(idListener2.id);
+			graph.addGraphAttribute(attribute);
 		} else if (null != ctx.subgraph()) {
 			/*
 			 * subgraph

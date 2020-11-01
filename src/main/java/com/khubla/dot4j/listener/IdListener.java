@@ -7,8 +7,6 @@ public class IdListener extends AbstractListener {
 
 	@Override
 	public void enterId(DOTParser.IdContext ctx) {
-		if (null != ctx.ID()) {
-			id = ctx.ID().getText();
-		}
+		id = ctx.getText();
 	}
 }

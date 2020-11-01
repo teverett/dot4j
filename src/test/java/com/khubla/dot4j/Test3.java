@@ -8,11 +8,11 @@ import org.junit.jupiter.api.*;
 
 import com.khubla.dot4j.domain.*;
 
-public class Test1 {
+public class Test3 {
 	@Test
 	public void test11() {
 		try {
-			final InputStream inputStream = Test1.class.getResourceAsStream("/example1.txt");
+			final InputStream inputStream = Test3.class.getResourceAsStream("/example3.txt");
 			assertNotNull(inputStream);
 			final Graph graph = DOTMarshaller.importGraph(inputStream);
 			/*
@@ -23,7 +23,7 @@ public class Test1 {
 			/*
 			 * graph attribs
 			 */
-			assertTrue(graph.getGraphAttributes().getAttributes().size() == 0);
+			assertTrue(graph.getGraphAttributes().getAttributes().size() == 1);
 			/*
 			 * edges
 			 */
@@ -37,7 +37,7 @@ public class Test1 {
 			/*
 			 * nodes
 			 */
-			assertTrue(graph.getNodes().size() == 0);
+			assertTrue(graph.getNodes().size() == 2);
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}

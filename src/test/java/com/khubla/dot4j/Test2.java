@@ -8,11 +8,11 @@ import org.junit.jupiter.api.*;
 
 import com.khubla.dot4j.domain.*;
 
-public class Test1 {
+public class Test2 {
 	@Test
-	public void test11() {
+	public void test2() {
 		try {
-			final InputStream inputStream = Test1.class.getResourceAsStream("/example1.txt");
+			final InputStream inputStream = Test2.class.getResourceAsStream("/example2.txt");
 			assertNotNull(inputStream);
 			final Graph graph = DOTMarshaller.importGraph(inputStream);
 			/*
