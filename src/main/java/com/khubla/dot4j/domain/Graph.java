@@ -2,7 +2,7 @@ package com.khubla.dot4j.domain;
 
 import java.util.*;
 
-public class Graph extends Vertex {
+public class Graph implements Vertex {
 	private boolean strict;
 	private GraphType graphType;
 	private final Map<String, Node> nodes = new HashMap<String, Node>();
@@ -11,6 +11,7 @@ public class Graph extends Vertex {
 	private final AttributeList nodeAttributes = new AttributeList();
 	private final AttributeList graphAttributes = new AttributeList();
 	private final AttributeList edgeAttributes = new AttributeList();
+	private String id;
 
 	public void addEdge(Edge edge) {
 		edges.add(edge);
@@ -52,6 +53,11 @@ public class Graph extends Vertex {
 		return graphType;
 	}
 
+	@Override
+	public String getId() {
+		return id;
+	}
+
 	public AttributeList getNodeAttributes() {
 		return nodeAttributes;
 	}
@@ -70,6 +76,10 @@ public class Graph extends Vertex {
 
 	public void setGraphType(GraphType graphType) {
 		this.graphType = graphType;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public void setStrict(boolean strict) {
