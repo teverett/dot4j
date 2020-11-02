@@ -5,16 +5,16 @@ import java.util.*;
 public class Attributes {
 	private final Map<String, Attribute> attributes = new HashMap<String, Attribute>();
 
+	public void addAttribute(Attribute attribute) {
+		attributes.put(attribute.getLhs(), attribute);
+	}
+
 	public void addAttributes(Attributes attributeList) {
 		if (null != attributeList) {
 			for (final Attribute attribute : attributeList.getAttributes().values()) {
 				addAttribute(attribute);
 			}
 		}
-	}
-
-	public void addAttribute(Attribute attribute) {
-		attributes.put(attribute.getLhs(), attribute);
 	}
 
 	public Attribute getAttribute(String lhs) {
