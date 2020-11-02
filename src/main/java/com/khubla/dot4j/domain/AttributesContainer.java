@@ -11,6 +11,10 @@ public abstract class AttributesContainer {
 		attributes.addAttribute(attribute);
 	}
 
+	public void addAttribute(String key, String value) {
+		attributes.addAttribute(new Attribute(key, value));
+	}
+
 	public void addAttributes(Attributes attributes) {
 		this.attributes.addAttributes(attributes);
 	}

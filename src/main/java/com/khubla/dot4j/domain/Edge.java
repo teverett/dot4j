@@ -17,6 +17,48 @@ public class Edge extends AttributesContainer implements Renderable {
 		this.to = to;
 	}
 
+	public Edge(Graph fromGraoh, Graph toGraoh) {
+		super(AttributeType.edge);
+		from = new EdgeConnectionPoint(fromGraoh);
+		to = new EdgeConnectionPoint(toGraoh);
+	}
+
+	public Edge(Graph fromGraoh, NodeId toNode) {
+		super(AttributeType.edge);
+		from = new EdgeConnectionPoint(fromGraoh);
+		to = new EdgeConnectionPoint(toNode);
+	}
+
+	public Edge(Graph fromGraoh, String toNode) {
+		super(AttributeType.edge);
+		from = new EdgeConnectionPoint(fromGraoh);
+		to = new EdgeConnectionPoint(new NodeId(toNode));
+	}
+
+	public Edge(NodeId fromNode, Graph toGraoh) {
+		super(AttributeType.edge);
+		from = new EdgeConnectionPoint(fromNode);
+		to = new EdgeConnectionPoint(toGraoh);
+	}
+
+	public Edge(NodeId fromNode, NodeId toNode) {
+		super(AttributeType.edge);
+		from = new EdgeConnectionPoint(fromNode);
+		to = new EdgeConnectionPoint(toNode);
+	}
+
+	public Edge(String fromNode, Graph toGraoh) {
+		super(AttributeType.edge);
+		from = new EdgeConnectionPoint(new NodeId(fromNode));
+		to = new EdgeConnectionPoint(toGraoh);
+	}
+
+	public Edge(String fromNode, String toNode) {
+		super(AttributeType.edge);
+		from = new EdgeConnectionPoint(new NodeId(fromNode));
+		to = new EdgeConnectionPoint(new NodeId(toNode));
+	}
+
 	public EdgeConnectionPoint getFrom() {
 		return from;
 	}

@@ -5,7 +5,7 @@ package com.khubla.dot4j.graphvis;
  * <p>
  * http://www.graphviz.org/doc/info/arrows.html
  * </p>
- * 
+ *
  * @author tom
  */
 public enum ArrowShape {

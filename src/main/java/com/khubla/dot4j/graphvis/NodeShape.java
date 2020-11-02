@@ -5,7 +5,7 @@ package com.khubla.dot4j.graphvis;
  * <p>
  * http://www.graphviz.org/doc/info/shapes.html
  * </p>
- * 
+ *
  * @author tom
  */
 public enum NodeShape {
