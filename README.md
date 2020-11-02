@@ -1,6 +1,6 @@
 ![CI](https://github.com/teverett/dot4j/workflows/CI/badge.svg)
 
-#DOT4J
+# DOT4J
 
 A Java library for reading and writing [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language))
 
@@ -8,11 +8,11 @@ The DOT grammars is from [here](https://github.com/teverett/grammars-v4/tree/mas
 
 A formal description of DOT is available at [graphvis.org](https://graphviz.org/doc/info/lang.html)
 
-#License
+# License
 
 kGraphML is licensed under the 3-Clause BSD license.
 
-#Maven Coordinates
+# Maven Coordinates
 
 ```
 <groupId>com.khubla.dot4j</groupId>
@@ -21,7 +21,7 @@ kGraphML is licensed under the 3-Clause BSD license.
 <packaging>jar</packaging>
 ```
 
-#Usage
+# Usage
 
 Reading and writing of DOT files is done via [DOTMarshaller](https://github.com/teverett/dot4j/blob/master/src/main/java/com/khubla/dot4j/DOTMarshaller.java)
 
