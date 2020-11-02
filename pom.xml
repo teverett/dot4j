@@ -4,7 +4,7 @@
 	<artifactId>dot4j</artifactId>
 	<packaging>jar</packaging>
 	<name>khubla.com DOT Library</name>
-	<version>1.1.0</version>
+	<version>1.2.0-SNAPSHOT</version>
 	<description>khubla.com DOT Library</description>
 	<properties>
 		<target.jvm>1.8</target.jvm>
