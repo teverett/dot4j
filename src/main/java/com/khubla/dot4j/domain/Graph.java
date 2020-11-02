@@ -101,6 +101,11 @@ public class Graph implements Vertex, Renderable {
 		outputStreamWriter.write(renderContext.spaces() + "{\n");
 		renderContext.indent();
 		/*
+		 * attributes
+		 */
+		for (final Attribute attribute : attributes.getAttributes()) {
+		}
+		/*
 		 * nodes
 		 */
 		for (final Node node : nodes.values()) {

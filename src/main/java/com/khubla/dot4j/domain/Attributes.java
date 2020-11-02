@@ -4,26 +4,25 @@ import java.io.*;
 import java.util.*;
 
 public class Attributes implements Renderable {
-	private final Map<String, Attribute> attributes = new HashMap<String, Attribute>();
+	/*
+	 * make it a list so that naming overlaps are allowed
+	 */
+	private final List<Attribute> attributes = new ArrayList<Attribute>();
 
 	public void addAttribute(Attribute attribute) {
-		attributes.put(attribute.getLhs(), attribute);
+		attributes.add(attribute);
 	}
 
-	public void addAttributes(Attributes attributeList) {
-		if (null != attributeList) {
-			for (final Attribute attribute : attributeList.getAttributes().values()) {
+	public List<Attribute> getAttributes() {
+		return attributes;
+	}
+
+	public void addAttributes(Attributes attributes) {
+		if (null != attributes) {
+			for (final Attribute attribute : attributes.attributes) {
 				addAttribute(attribute);
 			}
 		}
-	}
-
-	public Attribute getAttribute(String lhs) {
-		return attributes.get(lhs);
-	}
-
-	public Map<String, Attribute> getAttributes() {
-		return attributes;
 	}
 
 	@Override
