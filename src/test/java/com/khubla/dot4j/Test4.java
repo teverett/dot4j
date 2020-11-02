@@ -40,4 +40,26 @@ public class Test4 {
 			e.printStackTrace();
 		}
 	}
+
+	@Test
+	public void testWrite() {
+		try {
+			final InputStream inputStream = Test1.class.getResourceAsStream("/example4.txt");
+			assertNotNull(inputStream);
+			final Graph graph = DOTMarshaller.importGraph(inputStream);
+			/*
+			 * write
+			 */
+			final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			DOTMarshaller.exportGraph(graph, byteArrayOutputStream);
+			System.out.println(byteArrayOutputStream.toString());
+			/*
+			 * reparse
+			 */
+			final Graph graph2 = DOTMarshaller.importGraph(new ByteArrayInputStream(byteArrayOutputStream.toString().getBytes()));
+			assertNotNull(graph2);
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
