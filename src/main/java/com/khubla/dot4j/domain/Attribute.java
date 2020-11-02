@@ -29,7 +29,7 @@ public class Attribute implements Renderable {
 		outputStreamWriter.write(renderContext.spaces());
 		if (null != attributeType) {
 			if (attributeType != AttributeType.anonymous) {
-				outputStreamWriter.write(this.attributeType.toString() + " ");
+				outputStreamWriter.write(attributeType.toString() + " ");
 			}
 		}
 		if (attributeType != AttributeType.anonymous) {
@@ -37,7 +37,7 @@ public class Attribute implements Renderable {
 		}
 		outputStreamWriter.write(lhs + "=");
 		boolean first = true;
-		for (String v : rhs) {
+		for (final String v : rhs) {
 			if (first) {
 				first = false;
 			} else {

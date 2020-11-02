@@ -13,10 +13,6 @@ public class Attributes implements Renderable {
 		attributes.add(attribute);
 	}
 
-	public List<Attribute> getAttributes() {
-		return attributes;
-	}
-
 	public void addAttributes(Attributes attributes) {
 		if (null != attributes) {
 			for (final Attribute attribute : attributes.attributes) {
@@ -25,8 +21,8 @@ public class Attributes implements Renderable {
 		}
 	}
 
-	public int size() {
-		return attributes.size();
+	public List<Attribute> getAttributes() {
+		return attributes;
 	}
 
 	@Override
@@ -34,5 +30,9 @@ public class Attributes implements Renderable {
 		for (final Attribute attribute : attributes) {
 			attribute.render(outputStreamWriter, renderContext);
 		}
+	}
+
+	public int size() {
+		return attributes.size();
 	}
 }
