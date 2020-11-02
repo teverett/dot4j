@@ -2,11 +2,11 @@
 
 # DOT4J
 
-A Java library for reading and writing [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language))
+A Java library for reading and writing [GraphViz](https://en.wikipedia.org/wiki/Graphviz) [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language)) files.
 
-The DOT grammars is from [here](https://github.com/teverett/grammars-v4/tree/master/dot)
+The DOT grammar is from [here](https://github.com/teverett/grammars-v4/tree/master/dot)
 
-A formal description of DOT is available at [graphvis.org](https://graphviz.org/doc/info/lang.html)
+A formal description of DOT is available at [graphviz.org](https://graphviz.org/doc/info/lang.html)
 
 # License
 
