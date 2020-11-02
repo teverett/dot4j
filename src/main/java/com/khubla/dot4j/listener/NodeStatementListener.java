@@ -17,7 +17,7 @@ public class NodeStatementListener extends AbstractListener {
 			node = new Node(nodeIdListener.nodeId.toString());
 		}
 		/*
-		 * ` attr
+		 * attr
 		 */
 		final Attributes attributes = new Attributes(AttributeType.anonymous);
 		if (null != ctx.attr_list()) {
