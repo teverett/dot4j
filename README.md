@@ -17,7 +17,7 @@ kGraphML is licensed under the 3-Clause BSD license.
 ```
 <groupId>com.khubla.dot4j</groupId>
 <artifactId>dot4j</artifactId>
-<version>1.0.0</version>
+<version>1.1.0</version>
 <packaging>jar</packaging>
 ```
 
