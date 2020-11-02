@@ -1,6 +1,7 @@
 package com.khubla.dot4j.domain;
 
 public class RenderContext {
+	private static final int INDENT_SIZE = 3;
 	private int indent = 0;
 	private GraphType graphType;
 
@@ -30,7 +31,7 @@ public class RenderContext {
 
 	public String spaces() {
 		final StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < indent; i++) {
+		for (int i = 0; i < (indent * INDENT_SIZE); i++) {
 			sb.append(" ");
 		}
 		return sb.toString();

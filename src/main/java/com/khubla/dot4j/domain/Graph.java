@@ -80,21 +80,23 @@ public class Graph implements Vertex, Renderable {
 		/*
 		 * graph type into the context, sadly
 		 */
-		renderContext.setGraphType(graphType);
-		/*
-		 * strict
-		 */
-		if (strict) {
-			outputStreamWriter.write("strict ");
+		if (graphType != GraphType.subgraph) {
+			renderContext.setGraphType(graphType);
+			/*
+			 * strict
+			 */
+			if (strict) {
+				outputStreamWriter.write("strict ");
+			}
+			/*
+			 * type
+			 */
+			outputStreamWriter.write(renderContext.spaces() + graphType.toString() + " ");
+			/*
+			 * id
+			 */
+			outputStreamWriter.write(renderContext.spaces() + id + " ");
 		}
-		/*
-		 * type
-		 */
-		outputStreamWriter.write(renderContext.spaces() + graphType.toString() + " ");
-		/*
-		 * id
-		 */
-		outputStreamWriter.write(renderContext.spaces() + id + " ");
 		/*
 		 * open brace and indent
 		 */
@@ -115,6 +117,12 @@ public class Graph implements Vertex, Renderable {
 		 */
 		for (final Edge edge : edges) {
 			edge.render(outputStreamWriter, renderContext);
+		}
+		/*
+		 * graphs
+		 */
+		for (final Graph graph : subGraphs) {
+			graph.render(outputStreamWriter, renderContext);
 		}
 		/*
 		 * close brace and outdent
