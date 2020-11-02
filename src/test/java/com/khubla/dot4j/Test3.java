@@ -27,13 +27,7 @@ public class Test3 {
 			/*
 			 * edges
 			 */
-			assertTrue(graph.getEdges().size() == 2);
-			final Edge edge0 = graph.getEdges().get(0);
-			assertTrue(edge0.getRhsGraphs().size() == 0);
-			assertTrue(edge0.getRhsNodeIds().size() == 2);
-			final Edge edge1 = graph.getEdges().get(1);
-			assertTrue(edge1.getRhsGraphs().size() == 0);
-			assertTrue(edge1.getRhsNodeIds().size() == 1);
+			assertTrue(graph.getEdges().size() == 3);
 			/*
 			 * nodes
 			 */

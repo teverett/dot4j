@@ -21,6 +21,12 @@ public class Graph implements Vertex {
 		edgeAttributes.add(attributeList);
 	}
 
+	public void addEdges(List<Edge> edges) {
+		for (final Edge edge : edges) {
+			this.edges.add(edge);
+		}
+	}
+
 	public void addGraphAttribute(Attribute attribute) {
 		graphAttributes.addAttribute(attribute);
 	}

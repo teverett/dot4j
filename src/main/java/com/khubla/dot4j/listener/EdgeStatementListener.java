@@ -1,46 +1,57 @@
 package com.khubla.dot4j.listener;
 
+import java.util.*;
+
 import com.khubla.dot.*;
 import com.khubla.dot4j.domain.*;
 
 public class EdgeStatementListener extends AbstractListener {
-	public Edge edge;
+	public List<Edge> edges = new ArrayList<Edge>();
 
 	@Override
 	public void enterEdge_stmt(DOTParser.Edge_stmtContext ctx) {
-		edge = new Edge();
+		EdgeConnectionPoint from = new EdgeConnectionPoint();
 		/*
-		 * node or graph
+		 * attr
+		 */
+		AttributeList attributeList = null;
+		if (null != ctx.attr_list()) {
+			final AttributeListListener attributeListListener = new AttributeListListener();
+			attributeListListener.enterAttr_list(ctx.attr_list());
+			attributeList = attributeListListener.attributeList;
+		}
+		/*
+		 * from node or graph
 		 */
 		if (null != ctx.node_id()) {
 			final NodeIdListener nodeIdListener = new NodeIdListener();
 			nodeIdListener.enterNode_id(ctx.node_id());
-			edge.setFromNodeId(nodeIdListener.nodeId);
+			from.setNodeId(nodeIdListener.nodeId);
 		} else if (null != ctx.subgraph()) {
 			final SubgraphListener subgraphListener = new SubgraphListener();
 			subgraphListener.enterSubgraph(ctx.subgraph());
-			edge.setFromSubGraph(subgraphListener.graph);
+			from.setSubGraph(subgraphListener.graph);
 		}
 		/*
-		 * edge RHS
+		 * walk edge RHS
 		 */
 		if (null != ctx.edgeRHS()) {
 			final EdgeRHSListener edgeRHSListener = new EdgeRHSListener();
 			edgeRHSListener.enterEdgeRHS(ctx.edgeRHS());
-			for (final NodeId nodeId : edgeRHSListener.nodeIds) {
-				edge.addRHSNodeId(nodeId);
+			/*
+			 * walk edges, connecting them up
+			 */
+			for (final EdgeConnectionPoint cp : edgeRHSListener.connectionPoints) {
+				final Edge thisEdge = new Edge();
+				thisEdge.setFrom(from);
+				thisEdge.setTo(cp);
+				thisEdge.addAttributeList(attributeList);
+				edges.add(thisEdge);
+				/*
+				 * from is now too
+				 */
+				from = cp;
 			}
-			for (final Graph graph : edgeRHSListener.subGraphs) {
-				edge.addRHSGraph(graph);
-			}
-		}
-		/*
-		 * attr
-		 */
-		if (null != ctx.attr_list()) {
-			final AttributeListListener attributeListListener = new AttributeListListener();
-			attributeListListener.enterAttr_list(ctx.attr_list());
-			edge.addAttributeList(attributeListListener.attributeList);
 		}
 	}
 }

@@ -6,8 +6,10 @@ public class AttributeList {
 	private final List<Attribute> attributes = new ArrayList<Attribute>();
 
 	public void add(AttributeList attributeList) {
-		for (final Attribute attribute : attributeList.getAttributes()) {
-			attributes.add(attribute);
+		if (null != attributeList) {
+			for (final Attribute attribute : attributeList.getAttributes()) {
+				attributes.add(attribute);
+			}
 		}
 	}
 

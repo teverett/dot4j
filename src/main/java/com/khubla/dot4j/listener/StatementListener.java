@@ -26,7 +26,7 @@ public class StatementListener extends AbstractListener {
 			 */
 			final EdgeStatementListener edgeStatementListener = new EdgeStatementListener();
 			edgeStatementListener.enterEdge_stmt(ctx.edge_stmt());
-			graph.addEdge(edgeStatementListener.edge);
+			graph.addEdges(edgeStatementListener.edges);
 		} else if (null != ctx.attr_stmt()) {
 			/*
 			 * attribute
