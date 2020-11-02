@@ -8,7 +8,7 @@ import java.util.*;
  *
  * @author tom
  */
-public class Graph implements Vertex, Renderable {
+public class Graph extends AttributesContainer implements Vertex, Renderable {
 	private boolean strict;
 	private GraphType graphType;
 	private final Map<String, Node> nodes = new HashMap<String, Node>();
@@ -17,16 +17,7 @@ public class Graph implements Vertex, Renderable {
 	 * subgraphs can have the same name....
 	 */
 	private final List<Graph> subGraphs = new ArrayList<Graph>();
-	private final Attributes attributes = new Attributes();
 	private String id;
-
-	public void addAttribute(Attribute attribute) {
-		attributes.addAttribute(attribute);
-	}
-
-	public void addAttributes(Attributes attributeList) {
-		attributes.addAttributes(attributeList);
-	}
 
 	public void addEdge(Edge edge) {
 		edges.add(edge);
@@ -44,10 +35,6 @@ public class Graph implements Vertex, Renderable {
 
 	public void addSubgraph(Graph graph) {
 		subGraphs.add(graph);
-	}
-
-	public Attributes getAttributes() {
-		return attributes;
 	}
 
 	public List<Edge> getEdges() {
@@ -105,7 +92,7 @@ public class Graph implements Vertex, Renderable {
 		/*
 		 * attributes
 		 */
-		attributes.render(outputStreamWriter, renderContext);
+		getAttributes().render(outputStreamWriter, renderContext);
 		/*
 		 * nodes
 		 */

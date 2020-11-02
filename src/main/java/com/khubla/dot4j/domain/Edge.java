@@ -7,18 +7,9 @@ import java.io.*;
  *
  * @author tom
  */
-public class Edge implements Renderable {
+public class Edge extends AttributesContainer implements Renderable {
 	private EdgeConnectionPoint from;
 	private EdgeConnectionPoint to;
-	private final Attributes attributes = new Attributes();
-
-	public void addAttributes(Attributes attributes) {
-		this.attributes.addAttributes(attributes);
-	}
-
-	public Attributes getAttributes() {
-		return attributes;
-	}
 
 	public EdgeConnectionPoint getFrom() {
 		return from;
@@ -55,7 +46,7 @@ public class Edge implements Renderable {
 		} else {
 			to.getSubGraph().render(outputStreamWriter, renderContext);
 		}
-		attributes.render(outputStreamWriter, renderContext);
+		getAttributes().render(outputStreamWriter, renderContext);
 		outputStreamWriter.write(";\n");
 	}
 
