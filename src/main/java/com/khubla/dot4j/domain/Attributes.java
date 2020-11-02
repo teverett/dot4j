@@ -68,7 +68,11 @@ public class Attributes implements Renderable {
 				if (first) {
 					first = false;
 				} else {
-					outputStreamWriter.write(" ");
+					if ((attributeType == AttributeType.anonymous) && (renderContext.isGraph())) {
+						outputStreamWriter.write("\n" + renderContext.spaces());
+					} else {
+						outputStreamWriter.write(" ");
+					}
 				}
 				attribute.render(outputStreamWriter, renderContext);
 			}
