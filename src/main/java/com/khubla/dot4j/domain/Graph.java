@@ -12,7 +12,10 @@ public class Graph implements Vertex {
 	private GraphType graphType;
 	private final Map<String, Node> nodes = new HashMap<String, Node>();
 	private final List<Edge> edges = new ArrayList<Edge>();
-	private final Map<String, Graph> subGraphs = new HashMap<String, Graph>();
+	/*
+	 * subgraphs can have the same name....
+	 */
+	private final List<Graph> subGraphs = new ArrayList<Graph>();
 	private final Attributes nodeAttributes = new Attributes();
 	private final Attributes graphAttributes = new Attributes();
 	private final Attributes edgeAttributes = new Attributes();
@@ -49,7 +52,7 @@ public class Graph implements Vertex {
 	}
 
 	public void addSubgraph(Graph graph) {
-		subGraphs.put(graph.getId(), graph);
+		subGraphs.add(graph);
 	}
 
 	public Attributes getEdgeAttributes() {
@@ -81,7 +84,7 @@ public class Graph implements Vertex {
 		return nodes;
 	}
 
-	public Map<String, Graph> getSubGraphs() {
+	public List<Graph> getSubGraphs() {
 		return subGraphs;
 	}
 

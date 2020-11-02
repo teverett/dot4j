@@ -40,6 +40,13 @@ public class StatementListener extends AbstractListener {
 			} else {
 				graph.addGraphAttributes(attributeStatementListener.attributes);
 			}
+		} else if (null != ctx.subgraph()) {
+			/*
+			 * subgraph
+			 */
+			final SubgraphListener subgraphListener = new SubgraphListener();
+			subgraphListener.enterSubgraph(ctx.subgraph());
+			graph.addSubgraph(subgraphListener.graph);
 		} else if (null != ctx.id()) {
 			/*
 			 * graph attribute
@@ -52,13 +59,6 @@ public class StatementListener extends AbstractListener {
 			attribute.setLhs(idListener1.id);
 			attribute.addRHS(idListener2.id);
 			graph.addGraphAttribute(attribute);
-		} else if (null != ctx.subgraph()) {
-			/*
-			 * subgraph
-			 */
-			final SubgraphListener subgraphListener = new SubgraphListener();
-			subgraphListener.enterSubgraph(ctx.subgraph());
-			graph.addSubgraph(subgraphListener.graph);
 		}
 	}
 }
