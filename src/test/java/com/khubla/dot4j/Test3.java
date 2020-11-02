@@ -10,7 +10,7 @@ import com.khubla.dot4j.domain.*;
 
 public class Test3 {
 	@Test
-	public void test11() {
+	public void testRead() {
 		try {
 			final InputStream inputStream = Test3.class.getResourceAsStream("/example3.txt");
 			assertNotNull(inputStream);
@@ -32,6 +32,28 @@ public class Test3 {
 			 * nodes
 			 */
 			assertTrue(graph.getNodes().size() == 2);
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void testWrite() {
+		try {
+			final InputStream inputStream = Test1.class.getResourceAsStream("/example3.txt");
+			assertNotNull(inputStream);
+			final Graph graph = DOTMarshaller.importGraph(inputStream);
+			/*
+			 * write
+			 */
+			final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			DOTMarshaller.exportGraph(graph, byteArrayOutputStream);
+			System.out.println(byteArrayOutputStream.toString());
+			/*
+			 * reparse
+			 */
+			final Graph graph2 = DOTMarshaller.importGraph(new ByteArrayInputStream(byteArrayOutputStream.toString().getBytes()));
+			assertNotNull(graph2);
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}

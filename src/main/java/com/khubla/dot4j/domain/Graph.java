@@ -1,5 +1,6 @@
 package com.khubla.dot4j.domain;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -7,7 +8,7 @@ import java.util.*;
  *
  * @author tom
  */
-public class Graph implements Vertex {
+public class Graph implements Vertex, Renderable {
 	private boolean strict;
 	private GraphType graphType;
 	private final Map<String, Node> nodes = new HashMap<String, Node>();
@@ -90,6 +91,50 @@ public class Graph implements Vertex {
 
 	public boolean isStrict() {
 		return strict;
+	}
+
+	@Override
+	public void render(OutputStreamWriter outputStreamWriter, RenderContext renderContext) throws IOException {
+		/*
+		 * graph type into the context, sadly
+		 */
+		renderContext.setGraphType(graphType);
+		/*
+		 * strict
+		 */
+		if (strict) {
+			outputStreamWriter.write("strict ");
+		}
+		/*
+		 * type
+		 */
+		outputStreamWriter.write(renderContext.spaces() + graphType.toString() + " ");
+		/*
+		 * id
+		 */
+		outputStreamWriter.write(renderContext.spaces() + id + " ");
+		/*
+		 * open brace and indent
+		 */
+		outputStreamWriter.write(renderContext.spaces() + "{\n");
+		renderContext.indent();
+		/*
+		 * nodes
+		 */
+		for (final Node node : nodes.values()) {
+			node.render(outputStreamWriter, renderContext);
+		}
+		/*
+		 * edges
+		 */
+		for (final Edge edge : edges) {
+			edge.render(outputStreamWriter, renderContext);
+		}
+		/*
+		 * close brace and outdent
+		 */
+		renderContext.outdent();
+		outputStreamWriter.write(renderContext.spaces() + "}\n");
 	}
 
 	public void setGraphType(GraphType graphType) {

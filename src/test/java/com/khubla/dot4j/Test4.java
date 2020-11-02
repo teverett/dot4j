@@ -10,7 +10,7 @@ import com.khubla.dot4j.domain.*;
 
 public class Test4 {
 	@Test
-	public void test11() {
+	public void testRead() {
 		try {
 			final InputStream inputStream = Test4.class.getResourceAsStream("/example4.txt");
 			assertNotNull(inputStream);

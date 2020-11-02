@@ -1,8 +1,9 @@
 package com.khubla.dot4j.domain;
 
+import java.io.*;
 import java.util.*;
 
-public class Attribute {
+public class Attribute implements Renderable {
 	private String lhs;
 	private final List<String> rhs = new ArrayList<String>();
 
@@ -16,6 +17,11 @@ public class Attribute {
 
 	public List<String> getRhs() {
 		return rhs;
+	}
+
+	@Override
+	public void render(OutputStreamWriter outputStreamWriter, RenderContext renderContext) throws IOException {
+		throw new RuntimeException("Not Implemented");
 	}
 
 	public void setLhs(String lhs) {

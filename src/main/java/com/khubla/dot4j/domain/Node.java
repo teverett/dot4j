@@ -1,6 +1,8 @@
 package com.khubla.dot4j.domain;
 
-public class Node implements Vertex {
+import java.io.*;
+
+public class Node implements Vertex, Renderable {
 	private final Attributes attributes = new Attributes();
 	private String id;
 
@@ -15,6 +17,11 @@ public class Node implements Vertex {
 	@Override
 	public String getId() {
 		return id;
+	}
+
+	@Override
+	public void render(OutputStreamWriter outputStreamWriter, RenderContext renderContext) throws IOException {
+		outputStreamWriter.write(renderContext.spaces() + id + "\n");
 	}
 
 	public void setId(String id) {

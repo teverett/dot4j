@@ -9,21 +9,15 @@ import com.khubla.dot4j.domain.*;
 import com.khubla.dot4j.listener.*;
 
 public class DOTMarshaller {
-	// public static void exportGraph(GraphmlType graphmlType, OutputStream outputStream) throws
-	// IOException, JAXBException {
-	// if ((null != graphmlType) && (null != outputStream)) {
-	// final JAXBContext jc = JAXBContext.newInstance(PACKAGE);
-	// final Marshaller marshaller = jc.createMarshaller();
-	// marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-	// /*
-	// * marshal
-	// */
-	// final ObjectFactory objectFactory = new ObjectFactory();
-	// final JAXBElement<GraphmlType> je = objectFactory.createGraphml(graphmlType);
-	// marshaller.marshal(je, outputStream);
-	// }
-	// }
-	//
+	public static void exportGraph(Graph graph, OutputStream outputStream) throws IOException {
+		if ((null != graph) && (null != outputStream)) {
+			final OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
+			final RenderContext renderContext = new RenderContext();
+			graph.render(outputStreamWriter, renderContext);
+			outputStreamWriter.flush();
+		}
+	}
+
 	public static Graph importGraph(InputStream inputStream) throws IOException {
 		if (null != inputStream) {
 			/*

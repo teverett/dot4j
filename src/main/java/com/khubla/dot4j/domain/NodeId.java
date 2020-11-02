@@ -1,6 +1,8 @@
 package com.khubla.dot4j.domain;
 
-public class NodeId {
+import java.io.*;
+
+public class NodeId implements Renderable {
 	private String id;
 	private Port port;
 
@@ -23,6 +25,14 @@ public class NodeId {
 
 	public Port getPort() {
 		return port;
+	}
+
+	@Override
+	public void render(OutputStreamWriter outputStreamWriter, RenderContext renderContext) throws IOException {
+		outputStreamWriter.write(id);
+		if (null != port) {
+			outputStreamWriter.write(":" + port.getId());
+		}
 	}
 
 	public void setId(String id) {

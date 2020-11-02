@@ -1,11 +1,13 @@
 package com.khubla.dot4j.domain;
 
+import java.io.*;
+
 /**
  * An Edge.
  *
  * @author tom
  */
-public class Edge {
+public class Edge implements Renderable {
 	private EdgeConnectionPoint from;
 	private EdgeConnectionPoint to;
 	private final Attributes attributes = new Attributes();
@@ -24,6 +26,36 @@ public class Edge {
 
 	public EdgeConnectionPoint getTo() {
 		return to;
+	}
+
+	@Override
+	public void render(OutputStreamWriter outputStreamWriter, RenderContext renderContext) throws IOException {
+		outputStreamWriter.write(renderContext.spaces());
+		/*
+		 * from
+		 */
+		if (from.getNodeId() != null) {
+			from.getNodeId().render(outputStreamWriter, renderContext);
+		} else {
+			from.getSubGraph().render(outputStreamWriter, renderContext);
+		}
+		/*
+		 * ugh
+		 */
+		if (renderContext.getGraphType() == GraphType.graph) {
+			outputStreamWriter.write(" -- ");
+		} else {
+			outputStreamWriter.write(" -> ");
+		}
+		/*
+		 * to
+		 */
+		if (to.getNodeId() != null) {
+			to.getNodeId().render(outputStreamWriter, renderContext);
+		} else {
+			to.getSubGraph().render(outputStreamWriter, renderContext);
+		}
+		outputStreamWriter.write(";\n");
 	}
 
 	public void setFrom(EdgeConnectionPoint from) {
