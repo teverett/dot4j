@@ -5,10 +5,17 @@ import com.khubla.dot4j.domain.*;
 
 public class AListListener extends AbstractListener {
 	public Attribute attribute;
+	private final AttributeType attributeType;
+
+	public AListListener(AttributeType attributeType) {
+		super();
+		this.attributeType = attributeType;
+	}
 
 	@Override
 	public void enterA_list(DOTParser.A_listContext ctx) {
 		attribute = new Attribute();
+		attribute.setAttributeType(attributeType);
 		if (null != ctx.id()) {
 			/*
 			 * lhs

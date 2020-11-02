@@ -17,17 +17,19 @@ public class Graph implements Vertex, Renderable {
 	 * subgraphs can have the same name....
 	 */
 	private final List<Graph> subGraphs = new ArrayList<Graph>();
-	private final Attributes nodeAttributes = new Attributes();
-	private final Attributes graphAttributes = new Attributes();
-	private final Attributes edgeAttributes = new Attributes();
+	private final Attributes attributes = new Attributes();
 	private String id;
+
+	public void addAttribute(Attribute attribute) {
+		attributes.addAttribute(attribute);
+	}
+
+	public void addAttributes(Attributes attributeList) {
+		attributes.addAttributes(attributeList);
+	}
 
 	public void addEdge(Edge edge) {
 		edges.add(edge);
-	}
-
-	public void addEdgeAttributes(Attributes attributeList) {
-		edgeAttributes.addAttributes(attributeList);
 	}
 
 	public void addEdges(List<Edge> edges) {
@@ -36,36 +38,20 @@ public class Graph implements Vertex, Renderable {
 		}
 	}
 
-	public void addGraphAttribute(Attribute attribute) {
-		graphAttributes.addAttribute(attribute);
-	}
-
-	public void addGraphAttributes(Attributes attributeList) {
-		graphAttributes.addAttributes(graphAttributes);
-	}
-
 	public void addNode(Node node) {
 		nodes.put(node.getId(), node);
-	}
-
-	public void addNodeAttributes(Attributes attributeList) {
-		nodeAttributes.addAttributes(attributeList);
 	}
 
 	public void addSubgraph(Graph graph) {
 		subGraphs.add(graph);
 	}
 
-	public Attributes getEdgeAttributes() {
-		return edgeAttributes;
+	public Attributes getAttributes() {
+		return attributes;
 	}
 
 	public List<Edge> getEdges() {
 		return edges;
-	}
-
-	public Attributes getGraphAttributes() {
-		return graphAttributes;
 	}
 
 	public GraphType getGraphType() {
@@ -75,10 +61,6 @@ public class Graph implements Vertex, Renderable {
 	@Override
 	public String getId() {
 		return id;
-	}
-
-	public Attributes getNodeAttributes() {
-		return nodeAttributes;
 	}
 
 	public Map<String, Node> getNodes() {

@@ -6,6 +6,12 @@ import com.khubla.dot4j.domain.*;
 
 public class AttributeListListener extends AbstractListener {
 	public Attributes attributes;
+	private final AttributeType attributeType;
+
+	public AttributeListListener(AttributeType attributeType) {
+		super();
+		this.attributeType = attributeType;
+	}
 
 	@Override
 	public void enterAttr_list(DOTParser.Attr_listContext ctx) {
@@ -15,7 +21,7 @@ public class AttributeListListener extends AbstractListener {
 		 */
 		if (null != ctx.a_list()) {
 			for (final A_listContext a_listContext : ctx.a_list()) {
-				final AListListener aListListener = new AListListener();
+				final AListListener aListListener = new AListListener(attributeType);
 				aListListener.enterA_list(a_listContext);
 				attributes.addAttribute(aListListener.attribute);
 			}

@@ -23,8 +23,7 @@ public class Test5 {
 			/*
 			 * graph attribs
 			 */
-			assertTrue(graph.getGraphAttributes().getAttributes().size() == 0);
-			assertTrue(graph.getNodeAttributes().getAttributes().size() == 1);
+			assertTrue(graph.getAttributes().getAttributes().size() == 1);
 			/*
 			 * edges
 			 */
@@ -38,11 +37,11 @@ public class Test5 {
 			 */
 			assertTrue(graph.getSubGraphs().size() == 2);
 			assertTrue(graph.getSubGraphs().get(0).getNodes().size() == 3);
-			assertTrue(graph.getSubGraphs().get(0).getGraphAttributes().size() == 1);
-			assertNotNull(graph.getSubGraphs().get(0).getGraphAttributes().getAttribute("rank"));
-			assertTrue(graph.getSubGraphs().get(0).getGraphAttributes().getAttribute("rank").getRhs().get(0).compareTo("same") == 0);
+			assertTrue(graph.getSubGraphs().get(0).getAttributes().size() == 1);
+			assertNotNull(graph.getSubGraphs().get(0).getAttributes().getAttribute("rank"));
+			assertTrue(graph.getSubGraphs().get(0).getAttributes().getAttribute("rank").getRhs().get(0).compareTo("same") == 0);
 			assertTrue(graph.getSubGraphs().get(1).getNodes().size() == 3);
-			assertTrue(graph.getSubGraphs().get(1).getGraphAttributes().size() == 1);
+			assertTrue(graph.getSubGraphs().get(1).getAttributes().size() == 1);
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}

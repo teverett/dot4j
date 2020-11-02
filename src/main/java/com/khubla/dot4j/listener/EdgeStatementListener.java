@@ -16,7 +16,7 @@ public class EdgeStatementListener extends AbstractListener {
 		 */
 		Attributes attributes = null;
 		if (null != ctx.attr_list()) {
-			final AttributeListListener attributeListListener = new AttributeListListener();
+			final AttributeListListener attributeListListener = new AttributeListListener(AttributeType.edge);
 			attributeListListener.enterAttr_list(ctx.attr_list());
 			attributes = attributeListListener.attributes;
 		}
