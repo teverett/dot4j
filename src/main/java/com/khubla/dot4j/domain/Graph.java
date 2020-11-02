@@ -108,19 +108,21 @@ public class Graph implements Vertex, Renderable {
 			if (strict) {
 				outputStreamWriter.write("strict ");
 			}
-			/*
-			 * type
-			 */
-			outputStreamWriter.write(renderContext.spaces() + graphType.toString() + " ");
-			/*
-			 * id
-			 */
-			outputStreamWriter.write(renderContext.spaces() + id + " ");
+		}
+		/*
+		 * type
+		 */
+		outputStreamWriter.write(renderContext.spaces() + graphType.toString() + " ");
+		/*
+		 * id
+		 */
+		if (null != id) {
+			outputStreamWriter.write(id + " ");
 		}
 		/*
 		 * open brace and indent
 		 */
-		outputStreamWriter.write(renderContext.spaces() + "{\n");
+		outputStreamWriter.write("{\n");
 		renderContext.indent();
 		/*
 		 * attributes
