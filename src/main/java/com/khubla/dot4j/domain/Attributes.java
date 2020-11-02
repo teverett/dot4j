@@ -5,7 +5,7 @@ import java.util.*;
 public class Attributes {
 	private final Map<String, Attribute> attributes = new HashMap<String, Attribute>();
 
-	public void add(Attributes attributeList) {
+	public void addAttributes(Attributes attributeList) {
 		if (null != attributeList) {
 			for (final Attribute attribute : attributeList.getAttributes().values()) {
 				addAttribute(attribute);

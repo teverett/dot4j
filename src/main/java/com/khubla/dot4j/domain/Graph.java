@@ -23,7 +23,7 @@ public class Graph implements Vertex {
 	}
 
 	public void addEdgeAttributes(Attributes attributeList) {
-		edgeAttributes.add(attributeList);
+		edgeAttributes.addAttributes(attributeList);
 	}
 
 	public void addEdges(List<Edge> edges) {
@@ -37,7 +37,7 @@ public class Graph implements Vertex {
 	}
 
 	public void addGraphAttributes(Attributes attributeList) {
-		graphAttributes.add(graphAttributes);
+		graphAttributes.addAttributes(graphAttributes);
 	}
 
 	public void addNode(Node node) {
@@ -45,7 +45,7 @@ public class Graph implements Vertex {
 	}
 
 	public void addNodeAttributes(Attributes attributeList) {
-		nodeAttributes.add(attributeList);
+		nodeAttributes.addAttributes(attributeList);
 	}
 
 	public void addSubgraph(Graph graph) {

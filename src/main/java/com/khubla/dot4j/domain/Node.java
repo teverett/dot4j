@@ -5,7 +5,7 @@ public class Node implements Vertex {
 	private String id;
 
 	public void addAttributes(Attributes attributeList) {
-		attributes.add(attributeList);
+		attributes.addAttributes(attributeList);
 	}
 
 	public Attributes getAttributes() {

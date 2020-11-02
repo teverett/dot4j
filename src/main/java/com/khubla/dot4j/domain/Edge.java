@@ -11,7 +11,7 @@ public class Edge {
 	private final Attributes attributes = new Attributes();
 
 	public void addAttributes(Attributes attributes) {
-		this.attributes.add(attributes);
+		this.attributes.addAttributes(attributes);
 	}
 
 	public Attributes getAttributes() {
