@@ -11,19 +11,21 @@ public class NodeIdListener extends AbstractListener {
 		/*
 		 * id
 		 */
-		nodeId = new NodeId();
+		String id = null;
 		if (null != ctx.id()) {
 			final IdListener idListener = new IdListener();
 			idListener.enterId(ctx.id());
-			nodeId.setId(idListener.id);
+			id = idListener.id;
 		}
 		/*
 		 * port
 		 */
+		Port port = null;
 		if (null != ctx.port()) {
 			final PortListener portListener = new PortListener();
 			portListener.enterPort(ctx.port());
-			nodeId.setPort(portListener.port);
+			port = portListener.port;
 		}
+		nodeId = new NodeId(id, port);
 	}
 }

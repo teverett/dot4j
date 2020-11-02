@@ -8,31 +8,34 @@ public class GraphListener extends AbstractListener {
 
 	@Override
 	public void enterGraph(DOTParser.GraphContext ctx) {
-		graph = new Graph();
 		/*
 		 * strict
 		 */
+		boolean strict;
 		if (ctx.STRICT() != null) {
-			graph.setStrict(true);
+			strict = true;
 		} else {
-			graph.setStrict(false);
+			strict = false;
 		}
 		/*
 		 * type
 		 */
+		GraphType graphType;
 		if (ctx.GRAPH() != null) {
-			graph.setGraphType(GraphType.graph);
+			graphType = GraphType.graph;
 		} else {
-			graph.setGraphType(GraphType.digraph);
+			graphType = GraphType.digraph;
 		}
 		/*
 		 * id
 		 */
+		String id = null;
 		if (null != ctx.id()) {
 			final IdListener idListener = new IdListener();
 			idListener.enterId(ctx.id());
-			graph.setId(idListener.id);
+			id = idListener.id;
 		}
+		graph = new Graph(strict, graphType, id);
 		/*
 		 * statement list
 		 */

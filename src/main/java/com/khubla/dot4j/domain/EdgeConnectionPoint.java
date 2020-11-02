@@ -6,8 +6,20 @@ package com.khubla.dot4j.domain;
  * @author tom
  */
 public class EdgeConnectionPoint {
-	private NodeId nodeId;
-	private Graph subGraph;
+	private final NodeId nodeId;
+	private final Graph subGraph;
+
+	public EdgeConnectionPoint(Graph subGraph) {
+		super();
+		nodeId = null;
+		this.subGraph = subGraph;
+	}
+
+	public EdgeConnectionPoint(NodeId nodeId) {
+		super();
+		this.nodeId = nodeId;
+		subGraph = null;
+	}
 
 	public NodeId getNodeId() {
 		return nodeId;
@@ -15,13 +27,5 @@ public class EdgeConnectionPoint {
 
 	public Graph getSubGraph() {
 		return subGraph;
-	}
-
-	public void setNodeId(NodeId nodeId) {
-		this.nodeId = nodeId;
-	}
-
-	public void setSubGraph(Graph subGraph) {
-		this.subGraph = subGraph;
 	}
 }

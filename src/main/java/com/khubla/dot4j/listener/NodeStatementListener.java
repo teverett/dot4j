@@ -8,14 +8,13 @@ public class NodeStatementListener extends AbstractListener {
 
 	@Override
 	public void enterNode_stmt(DOTParser.Node_stmtContext ctx) {
-		node = new Node();
 		/*
 		 * id
 		 */
 		if (null != ctx.node_id()) {
 			final NodeIdListener nodeIdListener = new NodeIdListener();
 			nodeIdListener.enterNode_id(ctx.node_id());
-			node.setId(nodeIdListener.nodeId.toString());
+			node = new Node(nodeIdListener.nodeId.toString());
 		}
 		/*
 		 * ` attr

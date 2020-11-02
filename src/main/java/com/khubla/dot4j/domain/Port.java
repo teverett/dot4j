@@ -1,11 +1,8 @@
 package com.khubla.dot4j.domain;
 
 public class Port {
-	private String id;
-	private CompassPoint compassPoint;
-
-	public Port() {
-	}
+	private final String id;
+	private final CompassPoint compassPoint;
 
 	public Port(String port) {
 		if (port.contains(":")) {
@@ -14,7 +11,13 @@ public class Port {
 			compassPoint = CompassPoint.valueOf(names[1]);
 		} else {
 			id = port;
+			compassPoint = null;
 		}
+	}
+
+	public Port(String id, CompassPoint compassPoint) {
+		this.id = id;
+		this.compassPoint = compassPoint;
 	}
 
 	public CompassPoint getCompassPoint() {
@@ -23,14 +26,6 @@ public class Port {
 
 	public String getId() {
 		return id;
-	}
-
-	public void setCompassPoint(CompassPoint compassPoint) {
-		this.compassPoint = compassPoint;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	@Override

@@ -16,16 +16,14 @@ public class EdgeRHSListener extends AbstractListener {
 		for (int i = 0; i < ctx.children.size(); i++) {
 			final ParseTree parseTree = ctx.children.get(i);
 			if (parseTree instanceof Node_idContext) {
-				final EdgeConnectionPoint edgeConnectionPoint = new EdgeConnectionPoint();
 				final NodeIdListener nodeIdListener = new NodeIdListener();
 				nodeIdListener.enterNode_id((Node_idContext) parseTree);
-				edgeConnectionPoint.setNodeId(nodeIdListener.nodeId);
+				final EdgeConnectionPoint edgeConnectionPoint = new EdgeConnectionPoint(nodeIdListener.nodeId);
 				connectionPoints.add(edgeConnectionPoint);
 			} else if (parseTree instanceof SubgraphContext) {
-				final EdgeConnectionPoint edgeConnectionPoint = new EdgeConnectionPoint();
 				final SubgraphListener subgraphListener = new SubgraphListener();
 				subgraphListener.enterSubgraph((SubgraphContext) parseTree);
-				edgeConnectionPoint.setSubGraph(subgraphListener.graph);
+				final EdgeConnectionPoint edgeConnectionPoint = new EdgeConnectionPoint(subgraphListener.graph);
 				connectionPoints.add(edgeConnectionPoint);
 			}
 		}

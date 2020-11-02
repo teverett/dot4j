@@ -8,11 +8,13 @@ import java.io.*;
  * @author tom
  */
 public class Edge extends AttributesContainer implements Renderable {
-	private EdgeConnectionPoint from;
-	private EdgeConnectionPoint to;
+	private final EdgeConnectionPoint from;
+	private final EdgeConnectionPoint to;
 
-	public Edge() {
+	public Edge(EdgeConnectionPoint from, EdgeConnectionPoint to) {
 		super(AttributeType.edge);
+		this.from = from;
+		this.to = to;
 	}
 
 	public EdgeConnectionPoint getFrom() {
@@ -53,13 +55,5 @@ public class Edge extends AttributesContainer implements Renderable {
 		renderContext.setGraph(false);
 		getAttributes().render(outputStreamWriter, renderContext);
 		outputStreamWriter.write(";\n");
-	}
-
-	public void setFrom(EdgeConnectionPoint from) {
-		this.from = from;
-	}
-
-	public void setTo(EdgeConnectionPoint to) {
-		this.to = to;
 	}
 }

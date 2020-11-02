@@ -3,10 +3,11 @@ package com.khubla.dot4j.domain;
 import java.io.*;
 
 public class Node extends AttributesContainer implements Vertex, Renderable {
-	private String id;
+	private final String id;
 
-	public Node() {
+	public Node(String id) {
 		super(AttributeType.node);
+		this.id = id;
 	}
 
 	@Override
@@ -20,9 +21,5 @@ public class Node extends AttributesContainer implements Vertex, Renderable {
 		renderContext.setGraph(false);
 		getAttributes().render(outputStreamWriter, renderContext);
 		outputStreamWriter.write(";\n");
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 }

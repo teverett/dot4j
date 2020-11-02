@@ -8,16 +8,16 @@ public class SubgraphListener extends AbstractListener {
 
 	@Override
 	public void enterSubgraph(DOTParser.SubgraphContext ctx) {
-		graph = new Graph();
-		graph.setGraphType(GraphType.subgraph);
 		/*
 		 * id
 		 */
+		String id = null;
 		if (null != ctx.id()) {
 			final IdListener idListener = new IdListener();
 			idListener.enterId(ctx.id());
-			graph.setId(idListener.id);
+			id = idListener.id;
 		}
+		graph = new Graph(false, GraphType.subgraph, id);
 		/*
 		 * statement list
 		 */

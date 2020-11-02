@@ -6,9 +6,6 @@ public class NodeId implements Renderable {
 	private String id;
 	private Port port;
 
-	public NodeId() {
-	}
-
 	public NodeId(String name) {
 		if (name.contains(":")) {
 			final String[] names = name.split(":");
@@ -17,6 +14,11 @@ public class NodeId implements Renderable {
 		} else {
 			id = name;
 		}
+	}
+
+	public NodeId(String id, Port port) {
+		this.id = id;
+		this.port = port;
 	}
 
 	public String getId() {

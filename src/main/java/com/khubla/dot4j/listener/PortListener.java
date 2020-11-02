@@ -8,17 +8,18 @@ public class PortListener extends AbstractListener {
 
 	@Override
 	public void enterPort(DOTParser.PortContext ctx) {
-		port = new Port();
 		if (null != ctx.id()) {
+			String id = null;
+			CompassPoint compassPoint = null;
 			final IdListener idListener = new IdListener();
 			idListener.enterId(ctx.id().get(0));
-			port.setId(idListener.id);
+			id = idListener.id;
 			if (ctx.id().size() > 1) {
 				final IdListener idListener2 = new IdListener();
 				idListener2.enterId(ctx.id().get(1));
-				port.setCompassPoint(CompassPoint.valueOf(idListener2.id));
+				compassPoint = CompassPoint.valueOf(idListener2.id);
 			}
+			port = new Port(id, compassPoint);
 		}
-		throw new RuntimeException("Not Implemented");
 	}
 }

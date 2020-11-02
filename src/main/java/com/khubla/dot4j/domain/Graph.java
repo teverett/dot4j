@@ -9,35 +9,25 @@ import java.util.*;
  * @author tom
  */
 public class Graph implements Vertex, Renderable {
-	private boolean strict;
-	private GraphType graphType;
+	private final boolean strict;
+	private final GraphType graphType;
 	private final Map<String, Node> nodes = new HashMap<String, Node>();
 	private final List<Edge> edges = new ArrayList<Edge>();
 	/*
 	 * subgraphs can have the same name....
 	 */
 	private final List<Graph> subGraphs = new ArrayList<Graph>();
-	private String id;
+	private final String id;
 	private final Attributes anonymousAttributes = new Attributes(AttributeType.anonymous);
 	private final Attributes nodeAttributes = new Attributes(AttributeType.node);
 	private final Attributes edgeAttributes = new Attributes(AttributeType.edge);
 	private final Attributes graphAttributes = new Attributes(AttributeType.graph);
 
-	public void addAttributes(Attributes attributes) {
-		if (attributes.getAttributeType() == AttributeType.anonymous) {
-			anonymousAttributes.addAttributes(attributes);
-		} else if (attributes.getAttributeType() == AttributeType.node) {
-			nodeAttributes.addAttributes(attributes);
-		} else if (attributes.getAttributeType() == AttributeType.edge) {
-			edgeAttributes.addAttributes(attributes);
-		} else if (attributes.getAttributeType() == AttributeType.graph) {
-			graphAttributes.addAttributes(attributes);
-		}
-	}
-
-	public void addAttribute(String key, String value, AttributeType attributeType) {
-		Attribute attribute = new Attribute(key, value);
-		addAttribute(attribute, attributeType);
+	public Graph(boolean strict, GraphType graphType, String id) {
+		super();
+		this.strict = strict;
+		this.graphType = graphType;
+		this.id = id;
 	}
 
 	public void addAttribute(Attribute attribute, AttributeType attributeType) {
@@ -49,6 +39,23 @@ public class Graph implements Vertex, Renderable {
 			edgeAttributes.addAttribute(attribute);
 		} else if (attributeType == AttributeType.graph) {
 			graphAttributes.addAttribute(attribute);
+		}
+	}
+
+	public void addAttribute(String key, String value, AttributeType attributeType) {
+		final Attribute attribute = new Attribute(key, value);
+		addAttribute(attribute, attributeType);
+	}
+
+	public void addAttributes(Attributes attributes) {
+		if (attributes.getAttributeType() == AttributeType.anonymous) {
+			anonymousAttributes.addAttributes(attributes);
+		} else if (attributes.getAttributeType() == AttributeType.node) {
+			nodeAttributes.addAttributes(attributes);
+		} else if (attributes.getAttributeType() == AttributeType.edge) {
+			edgeAttributes.addAttributes(attributes);
+		} else if (attributes.getAttributeType() == AttributeType.graph) {
+			graphAttributes.addAttributes(attributes);
 		}
 	}
 
@@ -171,17 +178,5 @@ public class Graph implements Vertex, Renderable {
 		 */
 		renderContext.outdent();
 		outputStreamWriter.write(renderContext.spaces() + "}\n");
-	}
-
-	public void setGraphType(GraphType graphType) {
-		this.graphType = graphType;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public void setStrict(boolean strict) {
-		this.strict = strict;
 	}
 }

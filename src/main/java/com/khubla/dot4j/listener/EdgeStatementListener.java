@@ -10,7 +10,7 @@ public class EdgeStatementListener extends AbstractListener {
 
 	@Override
 	public void enterEdge_stmt(DOTParser.Edge_stmtContext ctx) {
-		EdgeConnectionPoint from = new EdgeConnectionPoint();
+		EdgeConnectionPoint from = null;
 		/*
 		 * attr
 		 */
@@ -25,11 +25,11 @@ public class EdgeStatementListener extends AbstractListener {
 		if (null != ctx.node_id()) {
 			final NodeIdListener nodeIdListener = new NodeIdListener();
 			nodeIdListener.enterNode_id(ctx.node_id());
-			from.setNodeId(nodeIdListener.nodeId);
+			from = new EdgeConnectionPoint(nodeIdListener.nodeId);
 		} else if (null != ctx.subgraph()) {
 			final SubgraphListener subgraphListener = new SubgraphListener();
 			subgraphListener.enterSubgraph(ctx.subgraph());
-			from.setSubGraph(subgraphListener.graph);
+			from = new EdgeConnectionPoint(subgraphListener.graph);
 		}
 		/*
 		 * walk edge RHS
@@ -41,9 +41,7 @@ public class EdgeStatementListener extends AbstractListener {
 			 * walk edges, connecting them up
 			 */
 			for (final EdgeConnectionPoint cp : edgeRHSListener.connectionPoints) {
-				final Edge thisEdge = new Edge();
-				thisEdge.setFrom(from);
-				thisEdge.setTo(cp);
+				final Edge thisEdge = new Edge(from, cp);
 				thisEdge.addAttributes(attributes);
 				edges.add(thisEdge);
 				/*
