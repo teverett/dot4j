@@ -48,7 +48,7 @@ public class Attribute implements Renderable {
 		if (attributeType != AttributeType.anonymous) {
 			outputStreamWriter.write("]");
 		}
-		if (attributeType == AttributeType.anonymous) {
+		if (attributeType != null) {
 			outputStreamWriter.write(";\n");
 		}
 	}
