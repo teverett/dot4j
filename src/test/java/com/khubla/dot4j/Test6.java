@@ -8,34 +8,35 @@ import org.junit.jupiter.api.*;
 
 import com.khubla.dot4j.domain.*;
 
-public class Test4 {
+public class Test6 {
 	@Test
 	public void testRead() {
 		try {
-			final InputStream inputStream = Test4.class.getResourceAsStream("/example4.txt");
+			final InputStream inputStream = Test6.class.getResourceAsStream("/example6.txt");
 			assertNotNull(inputStream);
 			final Graph graph = DOTMarshaller.importGraph(inputStream);
 			/*
 			 * graph
 			 */
 			assertNotNull(graph);
-			assertTrue(graph.getId().compareTo("ethane") == 0);
+			assertTrue(graph.getId().compareTo("G") == 0);
 			/*
 			 * graph attribs
 			 */
-			assertTrue(graph.getGraphAttributes().getAttributes().size() == 0);
+			assertTrue(graph.getGraphAttributes().getAttributes().size() == 3);
+			assertTrue(graph.getNodeAttributes().getAttributes().size() == 3);
 			/*
 			 * edges
 			 */
-			assertTrue(graph.getEdges().size() == 7);
-			for (int i = 0; i < 7; i++) {
-				final Edge edge = graph.getEdges().get(i);
-				assertTrue(edge.getAttributes().getAttributes().size() == 1);
-			}
+			assertTrue(graph.getEdges().size() == 4);
 			/*
 			 * nodes
 			 */
 			assertTrue(graph.getNodes().size() == 0);
+			/*
+			 * subgraphs
+			 */
+			assertTrue(graph.getSubGraphs().size() == 3);
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}
@@ -44,7 +45,7 @@ public class Test4 {
 	@Test
 	public void testWrite() {
 		try {
-			final InputStream inputStream = Test1.class.getResourceAsStream("/example4.txt");
+			final InputStream inputStream = Test1.class.getResourceAsStream("/example6.txt");
 			assertNotNull(inputStream);
 			final Graph graph = DOTMarshaller.importGraph(inputStream);
 			/*

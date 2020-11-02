@@ -1,0 +1,35 @@
+digraph G {
+
+    graph [fontsize=10 fontname="Verdana" compound=true];
+    node [shape=record fontsize=10 fontname="Verdana"];
+
+    subgraph cluster_0 {
+        node [style=filled];
+        "Item 1" "Item 2";
+        label = "Container A";
+        color=blue;
+    }
+
+    subgraph cluster_1 {
+        node [style=filled];
+        "Item 3" "Item 4";
+        label = "Container B";
+        color=blue;
+    }
+
+    subgraph cluster_2 {
+        node [style=filled];
+        "Item 5" "Item 6";
+        label = "Container C";
+        color=blue;
+    }
+
+    // Edges between nodes render fine
+    "Item 1" -> "Item 2";
+    "Item 2" -> "Item 3";
+
+    // Edges that directly connect one cluster to another
+    "Item 1" -> "Item 3" [ltail=cluster_0 lhead=cluster_1];
+    "Item 1" -> "Item 5" [ltail=cluster_0 lhead=cluster_2];
+}
+

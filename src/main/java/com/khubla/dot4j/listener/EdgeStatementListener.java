@@ -14,11 +14,10 @@ public class EdgeStatementListener extends AbstractListener {
 		/*
 		 * attr
 		 */
-		Attributes attributes = null;
+		final Attributes attributes = new Attributes(AttributeType.anonymous);
 		if (null != ctx.attr_list()) {
-			final AttributeListListener attributeListListener = new AttributeListListener(null);
+			final AttributeListListener attributeListListener = new AttributeListListener(attributes);
 			attributeListListener.enterAttr_list(ctx.attr_list());
-			attributes = attributeListListener.attributes;
 		}
 		/*
 		 * from node or graph

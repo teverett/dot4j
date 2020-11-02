@@ -23,7 +23,7 @@ public class Test1 {
 			/*
 			 * graph attribs
 			 */
-			assertTrue(graph.getAttributes().getAttributes().size() == 0);
+			assertTrue(graph.getGraphAttributes().getAttributes().size() == 0);
 			/*
 			 * edges
 			 */

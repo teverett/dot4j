@@ -16,16 +16,18 @@ public class AttributeStatementListener extends AbstractListener {
 			attributeType = AttributeType.node;
 		} else if (null != ctx.EDGE()) {
 			attributeType = AttributeType.edge;
-		} else {
+		} else if (null != ctx.GRAPH()) {
 			attributeType = AttributeType.graph;
+		} else {
+			attributeType = AttributeType.anonymous;
 		}
+		attributes = new Attributes(attributeType);
 		/*
 		 * list
 		 */
 		if (null != ctx.attr_list()) {
-			final AttributeListListener attributeListListener = new AttributeListListener(attributeType);
+			final AttributeListListener attributeListListener = new AttributeListListener(attributes);
 			attributeListListener.enterAttr_list(ctx.attr_list());
-			attributes = attributeListListener.attributes;
 		}
 	}
 }

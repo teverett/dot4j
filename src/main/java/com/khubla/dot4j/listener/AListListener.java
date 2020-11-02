@@ -4,32 +4,34 @@ import com.khubla.dot.*;
 import com.khubla.dot4j.domain.*;
 
 public class AListListener extends AbstractListener {
-	public Attribute attribute;
-	private final AttributeType attributeType;
+	private final Attributes attributes;
 
-	public AListListener(AttributeType attributeType) {
+	public AListListener(Attributes attributes) {
 		super();
-		this.attributeType = attributeType;
+		this.attributes = attributes;
 	}
 
 	@Override
 	public void enterA_list(DOTParser.A_listContext ctx) {
-		attribute = new Attribute();
-		attribute.setAttributeType(attributeType);
 		if (null != ctx.id()) {
-			/*
-			 * lhs
-			 */
-			final IdListener idListener = new IdListener();
-			idListener.enterId(ctx.id(0));
-			attribute.setLhs(idListener.id);
-			/*
-			 * rhs
-			 */
-			for (int i = 1; i < (ctx.id().size()); i++) {
+			for (int i = 0; i < ctx.id().size(); i = i + 2) {
+				final Attribute attribute = new Attribute();
+				/*
+				 * lhs
+				 */
+				final IdListener idListener1 = new IdListener();
+				idListener1.enterId(ctx.id(i));
+				attribute.setLhs(idListener1.id);
+				/*
+				 * rhs
+				 */
 				final IdListener idListener2 = new IdListener();
-				idListener2.enterId(ctx.id(i));
-				attribute.addRHS(idListener2.id);
+				idListener2.enterId(ctx.id(i + 1));
+				attribute.setRhs(idListener2.id);
+				/*
+				 * add
+				 */
+				attributes.addAttribute(attribute);
 			}
 		}
 	}

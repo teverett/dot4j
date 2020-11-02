@@ -20,10 +20,11 @@ public class NodeStatementListener extends AbstractListener {
 		/*
 		 * ` attr
 		 */
+		final Attributes attributes = new Attributes(AttributeType.anonymous);
 		if (null != ctx.attr_list()) {
-			final AttributeListListener attributeListListener = new AttributeListListener(null);
+			final AttributeListListener attributeListListener = new AttributeListListener(attributes);
 			attributeListListener.enterAttr_list(ctx.attr_list());
-			node.addAttributes(attributeListListener.attributes);
+			node.addAttributes(attributes);
 		}
 	}
 }

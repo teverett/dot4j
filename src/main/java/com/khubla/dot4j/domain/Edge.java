@@ -11,6 +11,10 @@ public class Edge extends AttributesContainer implements Renderable {
 	private EdgeConnectionPoint from;
 	private EdgeConnectionPoint to;
 
+	public Edge() {
+		super(AttributeType.edge);
+	}
+
 	public EdgeConnectionPoint getFrom() {
 		return from;
 	}
@@ -46,6 +50,7 @@ public class Edge extends AttributesContainer implements Renderable {
 		} else {
 			to.getSubGraph().render(outputStreamWriter, renderContext);
 		}
+		renderContext.setGraph(false);
 		getAttributes().render(outputStreamWriter, renderContext);
 		outputStreamWriter.write(";\n");
 	}

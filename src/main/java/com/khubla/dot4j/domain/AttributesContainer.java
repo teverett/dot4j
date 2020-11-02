@@ -1,7 +1,11 @@
 package com.khubla.dot4j.domain;
 
 public abstract class AttributesContainer {
-	private final Attributes attributes = new Attributes();
+	private final Attributes attributes;
+
+	public AttributesContainer(AttributeType attributeType) {
+		attributes = new Attributes(attributeType);
+	}
 
 	public void addAttribute(Attribute attribute) {
 		attributes.addAttribute(attribute);

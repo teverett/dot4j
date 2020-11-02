@@ -8,7 +8,7 @@ import java.util.*;
  *
  * @author tom
  */
-public class Graph extends AttributesContainer implements Vertex, Renderable {
+public class Graph implements Vertex, Renderable {
 	private boolean strict;
 	private GraphType graphType;
 	private final Map<String, Node> nodes = new HashMap<String, Node>();
@@ -18,6 +18,22 @@ public class Graph extends AttributesContainer implements Vertex, Renderable {
 	 */
 	private final List<Graph> subGraphs = new ArrayList<Graph>();
 	private String id;
+	private final Attributes anonymousAttributes = new Attributes(AttributeType.anonymous);
+	private final Attributes nodeAttributes = new Attributes(AttributeType.node);
+	private final Attributes edgeAttributes = new Attributes(AttributeType.edge);
+	private final Attributes graphAttributes = new Attributes(AttributeType.graph);
+
+	public void addAttributes(Attributes attributes) {
+		if (attributes.getAttributeType() == AttributeType.anonymous) {
+			anonymousAttributes.addAttributes(attributes);
+		} else if (attributes.getAttributeType() == AttributeType.node) {
+			nodeAttributes.addAttributes(attributes);
+		} else if (attributes.getAttributeType() == AttributeType.edge) {
+			edgeAttributes.addAttributes(attributes);
+		} else if (attributes.getAttributeType() == AttributeType.graph) {
+			graphAttributes.addAttributes(attributes);
+		}
+	}
 
 	public void addEdge(Edge edge) {
 		edges.add(edge);
@@ -37,8 +53,20 @@ public class Graph extends AttributesContainer implements Vertex, Renderable {
 		subGraphs.add(graph);
 	}
 
+	public Attributes getAnonymousAttributes() {
+		return anonymousAttributes;
+	}
+
+	public Attributes getEdgeAttributes() {
+		return edgeAttributes;
+	}
+
 	public List<Edge> getEdges() {
 		return edges;
+	}
+
+	public Attributes getGraphAttributes() {
+		return graphAttributes;
 	}
 
 	public GraphType getGraphType() {
@@ -48,6 +76,10 @@ public class Graph extends AttributesContainer implements Vertex, Renderable {
 	@Override
 	public String getId() {
 		return id;
+	}
+
+	public Attributes getNodeAttributes() {
+		return nodeAttributes;
 	}
 
 	public Map<String, Node> getNodes() {
@@ -67,6 +99,7 @@ public class Graph extends AttributesContainer implements Vertex, Renderable {
 		/*
 		 * graph type into the context, sadly
 		 */
+		renderContext.setGraph(true);
 		if (graphType != GraphType.subgraph) {
 			renderContext.setGraphType(graphType);
 			/*
@@ -92,7 +125,10 @@ public class Graph extends AttributesContainer implements Vertex, Renderable {
 		/*
 		 * attributes
 		 */
-		getAttributes().render(outputStreamWriter, renderContext);
+		anonymousAttributes.render(outputStreamWriter, renderContext);
+		nodeAttributes.render(outputStreamWriter, renderContext);
+		edgeAttributes.render(outputStreamWriter, renderContext);
+		graphAttributes.render(outputStreamWriter, renderContext);
 		/*
 		 * nodes
 		 */
