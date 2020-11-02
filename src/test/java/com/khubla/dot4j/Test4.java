@@ -30,7 +30,7 @@ public class Test4 {
 			assertTrue(graph.getEdges().size() == 7);
 			for (int i = 0; i < 7; i++) {
 				final Edge edge = graph.getEdges().get(i);
-				assertTrue(edge.getAttributeList().getAttributes().size() == 1);
+				assertTrue(edge.getAttributes().getAttributes().size() == 1);
 			}
 			/*
 			 * nodes

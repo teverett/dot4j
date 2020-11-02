@@ -34,11 +34,11 @@ public class StatementListener extends AbstractListener {
 			final AttributeStatementListener attributeStatementListener = new AttributeStatementListener();
 			attributeStatementListener.enterAttr_stmt(ctx.attr_stmt());
 			if (attributeStatementListener.attributeType == AttributeType.node) {
-				graph.addNodeAttributes(attributeStatementListener.attributeList);
+				graph.addNodeAttributes(attributeStatementListener.attributes);
 			} else if (attributeStatementListener.attributeType == AttributeType.edge) {
-				graph.addEdgeAttributes(attributeStatementListener.attributeList);
+				graph.addEdgeAttributes(attributeStatementListener.attributes);
 			} else {
-				graph.addGraphAttributes(attributeStatementListener.attributeList);
+				graph.addGraphAttributes(attributeStatementListener.attributes);
 			}
 		} else if (null != ctx.id()) {
 			/*

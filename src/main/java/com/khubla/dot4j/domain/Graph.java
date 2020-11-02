@@ -2,22 +2,27 @@ package com.khubla.dot4j.domain;
 
 import java.util.*;
 
+/**
+ * Graoh
+ *
+ * @author tom
+ */
 public class Graph implements Vertex {
 	private boolean strict;
 	private GraphType graphType;
 	private final Map<String, Node> nodes = new HashMap<String, Node>();
 	private final List<Edge> edges = new ArrayList<Edge>();
 	private final Map<String, Graph> subGraphs = new HashMap<String, Graph>();
-	private final AttributeList nodeAttributes = new AttributeList();
-	private final AttributeList graphAttributes = new AttributeList();
-	private final AttributeList edgeAttributes = new AttributeList();
+	private final Attributes nodeAttributes = new Attributes();
+	private final Attributes graphAttributes = new Attributes();
+	private final Attributes edgeAttributes = new Attributes();
 	private String id;
 
 	public void addEdge(Edge edge) {
 		edges.add(edge);
 	}
 
-	public void addEdgeAttributes(AttributeList attributeList) {
+	public void addEdgeAttributes(Attributes attributeList) {
 		edgeAttributes.add(attributeList);
 	}
 
@@ -31,7 +36,7 @@ public class Graph implements Vertex {
 		graphAttributes.addAttribute(attribute);
 	}
 
-	public void addGraphAttributes(AttributeList attributeList) {
+	public void addGraphAttributes(Attributes attributeList) {
 		graphAttributes.add(graphAttributes);
 	}
 
@@ -39,7 +44,7 @@ public class Graph implements Vertex {
 		nodes.put(node.getId(), node);
 	}
 
-	public void addNodeAttributes(AttributeList attributeList) {
+	public void addNodeAttributes(Attributes attributeList) {
 		nodeAttributes.add(attributeList);
 	}
 
@@ -47,7 +52,7 @@ public class Graph implements Vertex {
 		subGraphs.put(graph.getId(), graph);
 	}
 
-	public AttributeList getEdgeAttributes() {
+	public Attributes getEdgeAttributes() {
 		return edgeAttributes;
 	}
 
@@ -55,7 +60,7 @@ public class Graph implements Vertex {
 		return edges;
 	}
 
-	public AttributeList getGraphAttributes() {
+	public Attributes getGraphAttributes() {
 		return graphAttributes;
 	}
 
@@ -68,7 +73,7 @@ public class Graph implements Vertex {
 		return id;
 	}
 
-	public AttributeList getNodeAttributes() {
+	public Attributes getNodeAttributes() {
 		return nodeAttributes;
 	}
 

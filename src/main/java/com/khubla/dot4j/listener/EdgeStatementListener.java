@@ -14,11 +14,11 @@ public class EdgeStatementListener extends AbstractListener {
 		/*
 		 * attr
 		 */
-		AttributeList attributeList = null;
+		Attributes attributes = null;
 		if (null != ctx.attr_list()) {
 			final AttributeListListener attributeListListener = new AttributeListListener();
 			attributeListListener.enterAttr_list(ctx.attr_list());
-			attributeList = attributeListListener.attributeList;
+			attributes = attributeListListener.attributes;
 		}
 		/*
 		 * from node or graph
@@ -45,7 +45,7 @@ public class EdgeStatementListener extends AbstractListener {
 				final Edge thisEdge = new Edge();
 				thisEdge.setFrom(from);
 				thisEdge.setTo(cp);
-				thisEdge.addAttributeList(attributeList);
+				thisEdge.addAttributes(attributes);
 				edges.add(thisEdge);
 				/*
 				 * from is now too

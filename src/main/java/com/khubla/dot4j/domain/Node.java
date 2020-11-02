@@ -1,15 +1,15 @@
 package com.khubla.dot4j.domain;
 
 public class Node implements Vertex {
-	private final AttributeList attributeList = new AttributeList();
+	private final Attributes attributes = new Attributes();
 	private String id;
 
-	public void addAttributeList(AttributeList attributeList) {
-		this.attributeList.add(attributeList);
+	public void addAttributes(Attributes attributeList) {
+		attributes.add(attributeList);
 	}
 
-	public AttributeList getAttributeList() {
-		return attributeList;
+	public Attributes getAttributes() {
+		return attributes;
 	}
 
 	@Override

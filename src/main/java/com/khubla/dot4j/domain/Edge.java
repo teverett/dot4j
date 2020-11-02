@@ -1,21 +1,21 @@
 package com.khubla.dot4j.domain;
 
 /**
- * An Edge. Only one of nodeId and subGraph should be valid.
+ * An Edge.
  *
  * @author tom
  */
 public class Edge {
 	private EdgeConnectionPoint from;
 	private EdgeConnectionPoint to;
-	private final AttributeList attributeList = new AttributeList();
+	private final Attributes attributes = new Attributes();
 
-	public void addAttributeList(AttributeList attributeList) {
-		this.attributeList.add(attributeList);
+	public void addAttributes(Attributes attributes) {
+		this.attributes.add(attributes);
 	}
 
-	public AttributeList getAttributeList() {
-		return attributeList;
+	public Attributes getAttributes() {
+		return attributes;
 	}
 
 	public EdgeConnectionPoint getFrom() {

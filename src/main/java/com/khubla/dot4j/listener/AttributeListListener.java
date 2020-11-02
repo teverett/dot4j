@@ -5,11 +5,11 @@ import com.khubla.dot.DOTParser.*;
 import com.khubla.dot4j.domain.*;
 
 public class AttributeListListener extends AbstractListener {
-	public AttributeList attributeList;
+	public Attributes attributes;
 
 	@Override
 	public void enterAttr_list(DOTParser.Attr_listContext ctx) {
-		attributeList = new AttributeList();
+		attributes = new Attributes();
 		/*
 		 * list
 		 */
@@ -17,7 +17,7 @@ public class AttributeListListener extends AbstractListener {
 			for (final A_listContext a_listContext : ctx.a_list()) {
 				final AListListener aListListener = new AListListener();
 				aListListener.enterA_list(a_listContext);
-				attributeList.addAttribute(aListListener.attribute);
+				attributes.addAttribute(aListListener.attribute);
 			}
 		}
 	}

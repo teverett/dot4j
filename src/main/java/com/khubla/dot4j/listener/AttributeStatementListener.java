@@ -5,7 +5,7 @@ import com.khubla.dot4j.domain.*;
 
 public class AttributeStatementListener extends AbstractListener {
 	public AttributeType attributeType;
-	public AttributeList attributeList;
+	public Attributes attributes;
 
 	@Override
 	public void enterAttr_stmt(DOTParser.Attr_stmtContext ctx) {
@@ -15,7 +15,7 @@ public class AttributeStatementListener extends AbstractListener {
 		if (null != ctx.attr_list()) {
 			final AttributeListListener attributeListListener = new AttributeListListener();
 			attributeListListener.enterAttr_list(ctx.attr_list());
-			attributeList = attributeListListener.attributeList;
+			attributes = attributeListListener.attributes;
 		}
 		/*
 		 * type
