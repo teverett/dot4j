@@ -55,6 +55,7 @@ public class Edge implements Renderable {
 		} else {
 			to.getSubGraph().render(outputStreamWriter, renderContext);
 		}
+		attributes.render(outputStreamWriter, renderContext);
 		outputStreamWriter.write(";\n");
 	}
 

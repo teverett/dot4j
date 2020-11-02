@@ -52,6 +52,7 @@ public class StatementListener extends AbstractListener {
 			final Attribute attribute = new Attribute();
 			attribute.setLhs(idListener1.id);
 			attribute.addRHS(idListener2.id);
+			attribute.setAttributeType(AttributeType.anonymous);
 			graph.addAttribute(attribute);
 		}
 	}

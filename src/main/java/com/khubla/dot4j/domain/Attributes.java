@@ -25,12 +25,14 @@ public class Attributes implements Renderable {
 		}
 	}
 
-	@Override
-	public void render(OutputStreamWriter outputStreamWriter, RenderContext renderContext) throws IOException {
-		throw new RuntimeException("Not Implemented");
-	}
-
 	public int size() {
 		return attributes.size();
+	}
+
+	@Override
+	public void render(OutputStreamWriter outputStreamWriter, RenderContext renderContext) throws IOException {
+		for (final Attribute attribute : attributes) {
+			attribute.render(outputStreamWriter, renderContext);
+		}
 	}
 }

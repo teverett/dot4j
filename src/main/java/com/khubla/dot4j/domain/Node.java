@@ -21,7 +21,9 @@ public class Node implements Vertex, Renderable {
 
 	@Override
 	public void render(OutputStreamWriter outputStreamWriter, RenderContext renderContext) throws IOException {
-		outputStreamWriter.write(renderContext.spaces() + id + "\n");
+		outputStreamWriter.write(renderContext.spaces() + id);
+		attributes.render(outputStreamWriter, renderContext);
+		outputStreamWriter.write(";\n");
 	}
 
 	public void setId(String id) {

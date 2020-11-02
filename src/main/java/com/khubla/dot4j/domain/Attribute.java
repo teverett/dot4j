@@ -26,7 +26,31 @@ public class Attribute implements Renderable {
 
 	@Override
 	public void render(OutputStreamWriter outputStreamWriter, RenderContext renderContext) throws IOException {
-		throw new RuntimeException("Not Implemented");
+		outputStreamWriter.write(renderContext.spaces());
+		if (null != attributeType) {
+			if (attributeType != AttributeType.anonymous) {
+				outputStreamWriter.write(this.attributeType.toString() + " ");
+			}
+		}
+		if (attributeType != AttributeType.anonymous) {
+			outputStreamWriter.write("[");
+		}
+		outputStreamWriter.write(lhs + "=");
+		boolean first = true;
+		for (String v : rhs) {
+			if (first) {
+				first = false;
+			} else {
+				outputStreamWriter.write(" ");
+			}
+			outputStreamWriter.write(v);
+		}
+		if (attributeType != AttributeType.anonymous) {
+			outputStreamWriter.write("]");
+		}
+		if (attributeType == AttributeType.anonymous) {
+			outputStreamWriter.write(";\n");
+		}
 	}
 
 	public void setAttributeType(AttributeType attributeType) {

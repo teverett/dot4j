@@ -1,5 +1,5 @@
 package com.khubla.dot4j.domain;
 
 public enum AttributeType {
-	graph, node, edge
+	graph, node, edge, anonymous
 }

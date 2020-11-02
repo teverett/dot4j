@@ -103,8 +103,7 @@ public class Graph implements Vertex, Renderable {
 		/*
 		 * attributes
 		 */
-		for (final Attribute attribute : attributes.getAttributes()) {
-		}
+		attributes.render(outputStreamWriter, renderContext);
 		/*
 		 * nodes
 		 */
