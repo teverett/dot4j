@@ -2,7 +2,7 @@
 DOT4J
 =============
 
-A Java library for rendering [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language))
+A Java library for reading and writing [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language))
 
 The DOT grammars is from [here](https://github.com/teverett/grammars-v4/tree/master/dot)
 
