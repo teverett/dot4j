@@ -35,6 +35,23 @@ public class Graph implements Vertex, Renderable {
 		}
 	}
 
+	public void addAttribute(String key, String value, AttributeType attributeType) {
+		Attribute attribute = new Attribute(key, value);
+		addAttribute(attribute, attributeType);
+	}
+
+	public void addAttribute(Attribute attribute, AttributeType attributeType) {
+		if (attributeType == AttributeType.anonymous) {
+			anonymousAttributes.addAttribute(attribute);
+		} else if (attributeType == AttributeType.node) {
+			nodeAttributes.addAttribute(attribute);
+		} else if (attributeType == AttributeType.edge) {
+			edgeAttributes.addAttribute(attribute);
+		} else if (attributeType == AttributeType.graph) {
+			graphAttributes.addAttribute(attribute);
+		}
+	}
+
 	public void addEdge(Edge edge) {
 		edges.add(edge);
 	}

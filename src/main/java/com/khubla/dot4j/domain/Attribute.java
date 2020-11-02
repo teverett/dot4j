@@ -3,8 +3,13 @@ package com.khubla.dot4j.domain;
 import java.io.*;
 
 public class Attribute implements Renderable {
-	private String lhs;
-	private String rhs;
+	private final String lhs;
+	private final String rhs;
+
+	public Attribute(String lhs, String rhs) {
+		this.lhs = lhs;
+		this.rhs = rhs;
+	}
 
 	public String getLhs() {
 		return lhs;
@@ -17,13 +22,5 @@ public class Attribute implements Renderable {
 	@Override
 	public void render(OutputStreamWriter outputStreamWriter, RenderContext renderContext) throws IOException {
 		outputStreamWriter.write(lhs + "=" + rhs);
-	}
-
-	public void setLhs(String lhs) {
-		this.lhs = lhs;
-	}
-
-	public void setRhs(String rhs) {
-		this.rhs = rhs;
 	}
 }
