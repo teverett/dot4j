@@ -10,7 +10,7 @@
 		<target.jvm>21</target.jvm>
 		<required-maven-version>3.3.1</required-maven-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit.version>5.10.2</junit.version>
+		<junit.version>5.11.3</junit.version>
 		<antlr.version>4.13.1</antlr.version>
 	</properties>
 	<developers>
